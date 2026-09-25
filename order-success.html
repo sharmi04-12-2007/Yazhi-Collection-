@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Placed – Yazhi Collection</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="offer-banner"><span id="offer-ticker-text"></span></div>
+<header class="yazhi-header">
+  <div class="container header-inner">
+    <a href="home.html" class="logo"><div class="logo-mark">✦</div><div><div class="logo-text">Yazhi Collection</div><div class="logo-sub">Luxury Boutique</div></div></a>
+    <nav class="yazhi-nav">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="btn-icon">🛍️<span data-cart-badge style="display:none"></span></a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer">
+  <div class="drawer-header"><div class="logo"><div class="logo-mark" style="width:32px;height:32px;font-size:.85rem">✦</div><div class="logo-text">Yazhi Collection</div></div><button class="drawer-close" id="drawer-close">✕</button></div>
+  <div class="drawer-nav"><a href="home.html">🏠 Home</a><a href="collections.html">👗 Collections</a></div>
+</nav>
+
+<div class="success-page">
+  <div class="success-box">
+    <div class="success-icon">🎉</div>
+    <h2 style="color:var(--plum);margin-bottom:.5rem">Order Placed Successfully!</h2>
+    <p style="color:var(--muted);margin-bottom:1.25rem">Thank you for shopping at Yazhi Collection. Your order has been received and will be confirmed by Sharmila M shortly.</p>
+
+    <div class="order-id-badge" id="order-id-display">Loading...</div>
+
+    <div id="order-details" style="text-align:left;background:var(--blush-lt);border-radius:var(--r-sm);padding:1rem 1.25rem;margin:1.25rem 0;font-size:.85rem">
+      <!-- Filled by JS -->
+    </div>
+
+    <div class="alert alert-info" style="text-align:left;font-size:.8rem;margin-bottom:1.5rem">
+      📞 Sharmila M will call you at <strong>6369685930</strong> to confirm your order within 2 hours during shop hours (9 AM – 9 PM).
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem">
+      <a href="track-order.html" class="btn btn-primary btn-lg" id="track-btn">Track My Order</a>
+      <a href="history.html" class="btn btn-ghost">View Order History</a>
+      <a href="home.html" class="btn btn-ghost">Continue Shopping</a>
+    </div>
+
+    <div style="margin-top:1.5rem">
+      <a href="https://wa.me/916369685930" target="_blank" class="btn btn-whatsapp btn-sm">💬 WhatsApp for Updates</a>
+    </div>
+  </div>
+</div>
+
+<footer class="yazhi-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2024 Yazhi Collection · Sharmila M · Coimbatore</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/orders.js"></script>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const orderId = sessionStorage.getItem('yazhi_last_order');
+  if (!orderId) { window.location.href = 'home.html'; return; }
+
+  document.getElementById('order-id-display').textContent = '📋 Order ID: ' + orderId;
+  document.getElementById('track-btn').href = 'track-order.html?id=' + encodeURIComponent(orderId);
+
+  const order = yazhiGetOrderById(orderId);
+  if (order) {
+    const detailsEl = document.getElementById('order-details');
+    detailsEl.innerHTML = `
+      <div style="display:flex;justify-content:space-between;margin-bottom:.4rem"><span style="color:var(--muted)">Date</span><span>${new Date(order.createdAt).toLocaleDateString('en-IN',{dateStyle:'medium'})}</span></div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:.4rem"><span style="color:var(--muted)">Items</span><span>${order.items.length} item${order.items.length>1?'s':''}</span></div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:.4rem"><span style="color:var(--muted)">Payment</span><span>${order.paymentMethod}</span></div>
+      ${order.appliedOffer ? `<div style="display:flex;justify-content:space-between;margin-bottom:.4rem"><span style="color:var(--muted)">Offer</span><span style="color:var(--ok)">${order.appliedOffer}</span></div>` : ''}
+      <div style="display:flex;justify-content:space-between;font-weight:700;color:var(--plum);margin-top:.4rem;padding-top:.4rem;border-top:1px solid var(--border)"><span>Total Paid</span><span>₹${order.total.toLocaleString('en-IN')}</span></div>`;
+  }
+});
+</script>
+</body>
+</html>

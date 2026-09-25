@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout – Yazhi Collection</title>
+  <meta name="description" content="Complete your order at Yazhi Collection – secure checkout with UPI and COD options.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="offer-banner"><span id="offer-ticker-text"></span></div>
+<header class="yazhi-header">
+  <div class="container header-inner">
+    <a href="home.html" class="logo"><div class="logo-mark">✦</div><div><div class="logo-text">Yazhi Collection</div><div class="logo-sub">Luxury Boutique</div></div></a>
+    <nav class="yazhi-nav">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="new-arrivals.html">New Arrivals</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="btn-icon">🛍️<span data-cart-badge style="display:none"></span></a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer">
+  <div class="drawer-header"><div class="logo"><div class="logo-mark" style="width:32px;height:32px;font-size:.85rem">✦</div><div class="logo-text">Yazhi Collection</div></div><button class="drawer-close" id="drawer-close">✕</button></div>
+  <div class="drawer-nav"><a href="home.html">🏠 Home</a><a href="collections.html">👗 Collections</a><a href="cart.html">🛍️ Cart</a></div>
+</nav>
+
+<div class="page-hero" style="padding:2.5rem 0 3rem">
+  <div class="container">
+    <div class="breadcrumb"><a href="home.html">Home</a><span>/</span><a href="cart.html">Cart</a><span>/</span><span>Checkout</span></div>
+    <h1>Checkout</h1>
+  </div>
+</div>
+
+<section style="padding-top:2rem">
+  <div class="container">
+    <div class="checkout-layout">
+      <!-- LEFT: Address + Payment -->
+      <div>
+        <!-- Delivery Address -->
+        <div class="section-card">
+          <h3>📍 Delivery Address</h3>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" id="addr-name" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" id="addr-phone" placeholder="10-digit mobile number" maxlength="10" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Address Line 1 *</label>
+            <input type="text" id="addr-line1" placeholder="House/Flat No, Street" required>
+          </div>
+          <div class="form-group">
+            <label>Address Line 2</label>
+            <input type="text" id="addr-line2" placeholder="Area, Landmark (optional)">
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>City *</label>
+              <input type="text" id="addr-city" placeholder="City" value="Coimbatore" required>
+            </div>
+            <div class="form-group">
+              <label>Pincode *</label>
+              <input type="text" id="addr-pin" placeholder="6-digit pincode" maxlength="6" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>State *</label>
+              <input type="text" id="addr-state" placeholder="State" value="Tamil Nadu" required>
+            </div>
+            <div class="form-group">
+              <label>Address Type</label>
+              <select id="addr-type">
+                <option>Home</option><option>Work</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="section-card">
+          <h3>💳 Payment Method</h3>
+          <div class="payment-options">
+            <label class="payment-option selected" id="pay-upi-opt">
+              <input type="radio" name="payment" value="upi" checked>
+              <div>
+                <div class="pay-label">📱 UPI Payment</div>
+                <div class="pay-sub">GPay, PhonePe, Paytm, BHIM UPI</div>
+              </div>
+            </label>
+            <label class="payment-option" id="pay-cod-opt">
+              <input type="radio" name="payment" value="cod">
+              <div>
+                <div class="pay-label">💵 Cash on Delivery</div>
+                <div class="pay-sub">Pay when your order arrives</div>
+              </div>
+            </label>
+          </div>
+
+          <div id="upi-section" style="margin-top:1rem">
+            <div class="form-group">
+              <label>UPI ID *</label>
+              <input type="text" id="upi-id" placeholder="yourname@upi" style="letter-spacing:.5px">
+            </div>
+            <div class="alert alert-info" style="font-size:.78rem">
+              📲 After placing order, you'll receive payment instructions on WhatsApp at <strong>6369685930</strong>
+            </div>
+          </div>
+
+          <div id="cod-section" style="display:none;margin-top:1rem">
+            <div class="alert alert-info" style="font-size:.78rem">
+              💵 Cash will be collected at delivery. Please keep exact change ready.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Special Instructions (optional)</label>
+          <textarea id="order-notes" rows="3" placeholder="Any special requests for your order..." style="width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:var(--r-sm);resize:vertical"></textarea>
+        </div>
+      </div>
+
+      <!-- RIGHT: Order Summary -->
+      <div class="cart-summary sticky-top">
+        <h3 style="font-family:var(--serif);color:var(--plum);margin-bottom:1.25rem">Order Summary</h3>
+        <div id="checkout-items"></div>
+        <hr class="divider">
+        <div id="checkout-totals"></div>
+        <button class="btn btn-primary btn-full btn-lg" onclick="placeOrder()" style="margin-top:1rem">
+          Place Order ✦
+        </button>
+        <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:.75rem">
+          🔒 Secure checkout · By placing order you agree to our terms
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="yazhi-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2024 Yazhi Collection · Sharmila M · Coimbatore</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/orders.js"></script>
+<script src="js/app.js"></script>
+<script>
+const session = yazhiGetSession();
+if (!session) { window.location.href = 'login.html?redirect=checkout.html'; }
+
+const couponCode = sessionStorage.getItem('yazhi_coupon') || '';
+
+function renderCheckoutSummary() {
+  const cart = yazhiGetCart();
+  if (cart.length === 0) { window.location.href = 'cart.html'; return; }
+
+  const itemsEl = document.getElementById('checkout-items');
+  itemsEl.innerHTML = cart.map(i => `
+    <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.6rem;gap:.5rem">
+      <span style="flex:1;line-height:1.3">${i.name}<br><span style="color:var(--muted);font-size:.73rem">${i.color} · ${i.size} · Qty: ${i.qty}</span></span>
+      <span style="font-weight:600;white-space:nowrap">₹${(i.price*i.qty).toLocaleString('en-IN')}</span>
+    </div>`).join('');
+
+  const totals = yazhiCalculateTotals(cart, couponCode, session ? session.id : null);
+  const totEl = document.getElementById('checkout-totals');
+  totEl.innerHTML = `
+    <div class="summary-row"><span>Subtotal</span><span>₹${totals.subtotal.toLocaleString('en-IN')}</span></div>
+    ${totals.discount>0 ? `<div class="summary-row saving"><span>🎉 Discount</span><span>−₹${totals.discount.toLocaleString('en-IN')}</span></div>` : ''}
+    <div class="summary-row"><span>Delivery</span><span>${totals.delivery===0?'<span style="color:var(--ok)">FREE</span>':'₹'+totals.delivery}</span></div>
+    <div class="summary-row total"><span>Total Payable</span><span>₹${totals.total.toLocaleString('en-IN')}</span></div>`;
+}
+
+// Payment option toggle
+document.querySelectorAll('.payment-option input').forEach(radio => {
+  radio.addEventListener('change', e => {
+    document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+    e.target.closest('.payment-option').classList.add('selected');
+    const isUpi = e.target.value === 'upi';
+    document.getElementById('upi-section').style.display = isUpi ? '' : 'none';
+    document.getElementById('cod-section').style.display = isUpi ? 'none' : '';
+  });
+});
+
+function placeOrder() {
+  const name = document.getElementById('addr-name').value.trim();
+  const phone = document.getElementById('addr-phone').value.trim();
+  const line1 = document.getElementById('addr-line1').value.trim();
+  const city = document.getElementById('addr-city').value.trim();
+  const pin = document.getElementById('addr-pin').value.trim();
+  const state = document.getElementById('addr-state').value.trim();
+  const payMethod = document.querySelector('input[name=payment]:checked').value;
+  const upiId = document.getElementById('upi-id').value.trim();
+
+  if (!name || !phone || !line1 || !city || !pin) {
+    yazhiToast('Please fill all required address fields.', 'error'); return;
+  }
+  if (!/^\d{10}$/.test(phone)) { yazhiToast('Please enter a valid 10-digit phone number.', 'error'); return; }
+  if (!/^\d{6}$/.test(pin)) { yazhiToast('Please enter a valid 6-digit pincode.', 'error'); return; }
+  if (payMethod === 'upi' && !upiId) { yazhiToast('Please enter your UPI ID.', 'error'); return; }
+
+  const cart = yazhiGetCart();
+  const totals = yazhiCalculateTotals(cart, couponCode, session.id);
+  const address = { name, phone, line1, line2: document.getElementById('addr-line2').value.trim(), city, pin, state, type: document.getElementById('addr-type').value };
+
+  const order = yazhiPlaceOrder(
+    session.id, session.name, session.phone || phone,
+    cart, address, payMethod === 'upi' ? `UPI (${upiId})` : 'Cash on Delivery',
+    totals.appliedOffer
+  );
+
+  yazhiClearCart();
+  sessionStorage.removeItem('yazhi_coupon');
+  sessionStorage.setItem('yazhi_last_order', order.id);
+  window.location.href = 'order-success.html';
+}
+
+document.addEventListener('DOMContentLoaded', renderCheckoutSummary);
+</script>
+</body>
+</html>

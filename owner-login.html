@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Login – Yazhi Collection Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="auth-page" style="background:linear-gradient(135deg,#261129 0%,#3B1F3F 60%,#7A3455 100%)">
+  <div class="auth-card" style="max-width:400px">
+    <div style="text-align:center;margin-bottom:2rem">
+      <div style="width:60px;height:60px;background:linear-gradient(135deg,#C9A45C,#A4813B);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto .75rem">👑</div>
+      <h1 style="font-size:1.6rem;margin-bottom:.25rem">Owner Portal</h1>
+      <p style="color:var(--muted);font-size:.85rem">Yazhi Collection · Admin Access</p>
+    </div>
+
+    <div class="alert alert-info" style="margin-bottom:1.5rem;font-size:.8rem">
+      🔒 This portal is exclusively for Sharmila M (Boutique Owner).
+    </div>
+
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="owner-username" placeholder="Owner username" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <div style="position:relative">
+        <input type="password" id="owner-password" placeholder="Owner password" style="padding-right:2.5rem" autocomplete="current-password">
+        <button onclick="togglePwd()" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;color:var(--muted);font-size:.9rem">👁</button>
+      </div>
+    </div>
+
+    <div id="owner-error" class="alert alert-warning" style="display:none"></div>
+
+    <button class="btn btn-gold btn-full" onclick="doOwnerLogin()" style="margin-top:.5rem">
+      👑 Login to Dashboard
+    </button>
+
+    <div style="text-align:center;margin-top:1.5rem">
+      <a href="home.html" style="font-size:.78rem;color:var(--muted)">← Back to Website</a>
+      &nbsp;·&nbsp;
+      <a href="login.html" style="font-size:.78rem;color:var(--muted)">Customer Login</a>
+    </div>
+
+    <div style="margin-top:2rem;padding:1rem;background:var(--blush-lt);border-radius:var(--r-sm);font-size:.75rem;color:var(--muted);text-align:center">
+      <strong>Demo credentials</strong><br>Username: <code>sharmila</code> · Password: <code>yazhi@owner2024</code>
+    </div>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+<script>
+// Redirect if already owner
+const sess = yazhiGetSession();
+if (sess && sess.role === 'owner') window.location.href = 'owner-dashboard.html';
+
+function togglePwd() {
+  const inp = document.getElementById('owner-password');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+
+function doOwnerLogin() {
+  const username = document.getElementById('owner-username').value.trim();
+  const password = document.getElementById('owner-password').value;
+  const errEl = document.getElementById('owner-error');
+  if (!username || !password) { errEl.style.display=''; errEl.textContent='Please enter both fields.'; return; }
+  const result = yazhiOwnerLogin(username, password);
+  if (result.success) {
+    yazhiToast('Welcome, Sharmila M! 👑', 'success');
+    setTimeout(() => { window.location.href = 'owner-dashboard.html'; }, 600);
+  } else {
+    errEl.style.display = '';
+    errEl.textContent = result.error;
+  }
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') doOwnerLogin(); });
+</script>
+</body>
+</html>

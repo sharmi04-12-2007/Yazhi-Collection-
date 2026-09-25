@@ -3,386 +3,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Profile & Measurements | Yazhi Collection Boutique</title>
-  <meta name="description" content="Manage your personal boutique profile, saved tailored measurements, addresses, and wishlist at Yazhi Collection.">
+  <title>My Profile – Yazhi Collection</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <!-- Top Announcement Bar -->
-  <div class="announcement-bar">
-    <div class="announcement-content">
-      <span class="announcement-badge">VIP Boutique Member</span>
-      <span>✨ Welcome to Yazhi Privé: Enjoy priority stitching and dedicated stylist support on WhatsApp</span>
-    </div>
-    <button class="announcement-close">&times;</button>
-  </div>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-container">
-      <a href="home.html" class="brand-logo">
-        <svg class="brand-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polygon points="50,15 62,38 88,38 67,54 75,80 50,65 25,80 33,54 12,38 38,38" fill="rgba(200,164,93,0.18)" stroke="var(--color-gold)" />
-          <circle cx="50" cy="48" r="12" fill="none" stroke="var(--color-gold-dark)" />
-        </svg>
-        <div class="brand-text">
-          <span class="brand-title">Yazhi Collection</span>
-          <span class="brand-tagline">Women's Luxury Boutique</span>
-        </div>
-      </a>
-
-      <nav class="nav-menu">
-        <a href="home.html" class="nav-link">Home</a>
-        <div class="nav-item-dropdown">
-          <a href="collections.html" class="nav-link">Collections &#9662;</a>
-          <div class="dropdown-menu">
-            <a href="bridal.html" class="dropdown-link"><span>Bridal Collection</span><span class="dropdown-badge">5 Types</span></a>
-            <a href="festive.html" class="dropdown-link"><span>Festive Splendor</span><span class="dropdown-badge">5 Types</span></a>
-            <a href="party.html" class="dropdown-link"><span>Party Glamour</span><span class="dropdown-badge">5 Types</span></a>
-            <a href="ethnic.html" class="dropdown-link"><span>Ethnic Classics</span><span class="dropdown-badge">5 Types</span></a>
-            <a href="custom-design.html" class="dropdown-link"><span>Custom Design</span><span class="dropdown-badge">Bespoke</span></a>
-            <a href="saree-collection.html" class="dropdown-link"><span>Saree Collection</span><span class="dropdown-badge">Handloom</span></a>
-            <a href="combos.html" class="dropdown-link"><span>Combos & Pairings</span><span class="dropdown-badge">Trending</span></a>
-            <a href="contemporary.html" class="dropdown-link"><span>Contemporary Wear</span><span class="dropdown-badge">Modern</span></a>
-          </div>
-        </div>
-        <a href="home.html#new-arrivals" class="nav-link">New Arrivals</a>
-        <a href="custom-design.html" class="nav-link">Bespoke Studio</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
-
-      <div class="header-actions">
-        <button class="action-btn search-trigger-btn" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        <a href="profile.html#wishlist" class="action-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg><span class="action-badge wishlist-badge" style="display: none;">0</span></a>
-        <a href="cart.html" class="action-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg><span class="action-badge cart-badge" style="display: none;">0</span></a>
-        <a href="history.html" class="action-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></a>
-        <a href="profile.html" class="action-btn active" style="color: var(--color-plum);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
-        <button class="mobile-toggle"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer -->
-  <div class="mobile-nav-drawer">
-    <div class="mobile-drawer-header">
-      <div class="brand-text"><span class="brand-title" style="font-size: 1.35rem;">Yazhi Collection</span></div>
-      <button class="mobile-close-btn">&times;</button>
-    </div>
-    <div class="mobile-links">
-      <a href="home.html" class="mobile-nav-link">Home</a>
-      <a href="collections.html" class="mobile-nav-link">All 8 Collections &rarr;</a>
-      <div class="mobile-sublinks">
-        <a href="bridal.html" class="mobile-sublink">• Bridal Collection</a>
-        <a href="festive.html" class="mobile-sublink">• Festive Splendor</a>
-        <a href="party.html" class="mobile-sublink">• Party Glamour</a>
-        <a href="ethnic.html" class="mobile-sublink">• Ethnic Classics</a>
-        <a href="custom-design.html" class="mobile-sublink">• Custom Design</a>
-        <a href="saree-collection.html" class="mobile-sublink">• Saree Collection</a>
-        <a href="combos.html" class="mobile-sublink">• Combos & Pairings</a>
-        <a href="contemporary.html" class="mobile-sublink">• Contemporary</a>
-      </div>
-      <a href="cart.html" class="mobile-nav-link">Shopping Cart</a>
-      <a href="profile.html" class="mobile-nav-link active">My Profile</a>
-      <a href="history.html" class="mobile-nav-link">Order History</a>
-      <a href="contact.html" class="mobile-nav-link">Contact</a>
+<div class="offer-banner"><span id="offer-ticker-text"></span></div>
+<header class="yazhi-header">
+  <div class="container header-inner">
+    <a href="home.html" class="logo"><div class="logo-mark">✦</div><div><div class="logo-text">Yazhi Collection</div><div class="logo-sub">Luxury Boutique</div></div></a>
+    <nav class="yazhi-nav">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a>
+      <a href="new-arrivals.html">New Arrivals</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="btn-icon">🛍️<span data-cart-badge style="display:none"></span></a>
+      <button class="btn-icon" onclick="yazhiLogout()" title="Logout">🚪</button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
   </div>
-  <div class="drawer-backdrop"></div>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer">
+  <div class="drawer-header"><div class="logo"><div class="logo-mark" style="width:32px;height:32px;font-size:.85rem">✦</div><div class="logo-text">Yazhi Collection</div></div><button class="drawer-close" id="drawer-close">✕</button></div>
+  <div class="drawer-nav"><a href="home.html">🏠 Home</a><a href="collections.html">👗 Collections</a><a href="profile.html" class="active">👤 Profile</a><a href="history.html">📋 Orders</a><a href="cart.html">🛍️ Cart</a></div>
+</nav>
 
-  <!-- Page Header -->
-  <section style="background: var(--color-plum); color: var(--color-white); padding: 40px 0;">
-    <div class="container">
-      <div class="breadcrumbs" style="margin-bottom: 8px;">
-        <a href="home.html">Home</a>
-        <span class="breadcrumb-separator">&gt;</span>
-        <span>My Account & Measurements</span>
-      </div>
-      <h1 style="color: var(--color-white); font-size: 2.2rem;">Client Profile & Atelier Preferences</h1>
-    </div>
-  </section>
+<div class="page-hero" style="padding:2.5rem 0 3rem">
+  <div class="container">
+    <div class="breadcrumb"><a href="home.html">Home</a><span>/</span><span>My Profile</span></div>
+    <h1>My Profile</h1>
+  </div>
+</div>
 
-  <!-- Profile Layout -->
-  <main class="container section-padding">
-    <div class="profile-grid">
+<section style="padding-top:2rem">
+  <div class="container">
+    <div class="profile-layout">
       <!-- Sidebar -->
-      <aside class="profile-sidebar">
-        <div class="profile-avatar-large">AS</div>
-        <h3 class="profile-name">Ananya Sundaram</h3>
-        <span class="profile-badge">👑 Privé Gold Member</span>
-        <p style="font-size: 0.85rem; color: var(--color-muted); margin-bottom: 24px;">ananya.sundaram@example.com<br>Member since March 2025</p>
+      <div class="profile-sidebar">
+        <div class="profile-avatar" id="profile-initials">Y</div>
+        <p style="text-align:center;font-family:var(--serif);font-size:1.1rem;color:var(--plum);margin-bottom:.25rem" id="profile-name">Loading...</p>
+        <p style="text-align:center;font-size:.78rem;color:var(--muted);margin-bottom:1.25rem" id="profile-email"></p>
+        <div class="profile-nav">
+          <a href="profile.html" class="active">👤 My Profile</a>
+          <a href="history.html">📋 Order History</a>
+          <a href="track-order.html">📍 Track Order</a>
+          <a href="enquiry.html">💬 Enquiry</a>
+          <div class="drawer-divider"></div>
+          <button onclick="yazhiLogout()" style="width:100%;text-align:left;padding:.7rem 1rem;background:none;color:var(--danger);font-size:.88rem;font-weight:500;border-radius:var(--r-sm);cursor:pointer">🚪 Logout</button>
+        </div>
+      </div>
 
-        <nav class="profile-nav">
-          <button class="profile-nav-link active" onclick="switchProfileTab('personal')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            <span>Personal Details</span>
-          </button>
-          <button class="profile-nav-link" onclick="switchProfileTab('measurements')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
-            <span>Custom Measurements</span>
-          </button>
-          <button class="profile-nav-link" onclick="switchProfileTab('addresses')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            <span>Saved Addresses</span>
-          </button>
-          <button class="profile-nav-link" onclick="switchProfileTab('wishlist')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            <span>My Wishlist</span>
-          </button>
-          <a href="history.html" class="profile-nav-link">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            <span>View Order History</span>
-          </a>
-        </nav>
-      </aside>
-
-      <!-- Main Tabs Content -->
-      <div class="profile-tab-content">
-
-        <!-- TAB 1: Personal Details -->
-        <div id="tab-personal" class="tab-pane">
-          <h3 style="font-size: 1.45rem; color: var(--color-plum); margin-bottom: 8px;">Personal Information</h3>
-          <p style="font-size: 0.88rem; color: var(--color-muted); margin-bottom: 24px;">Manage your boutique contact information for delivery notifications and stylist updates.</p>
-
-          <form id="profile-info-form">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-              <div class="form-group">
-                <label class="form-label">First Name</label>
-                <input type="text" class="form-control" id="prof-fname" value="Ananya" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="prof-lname" value="Sundaram" required>
-              </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-              <div class="form-group">
-                <label class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="prof-email" value="ananya.sundaram@example.com" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">WhatsApp Contact</label>
-                <input type="tel" class="form-control" id="prof-phone" value="+91 98401 23456" required>
-              </div>
-            </div>
-
+      <!-- Main -->
+      <div>
+        <div class="section-card">
+          <h3>Personal Information</h3>
+          <div class="form-grid-2">
             <div class="form-group">
-              <label class="form-label">Preferred Saree & Outfit Language</label>
-              <select class="form-control" id="prof-lang">
-                <option value="English">English</option>
-                <option value="Tamil" selected>Tamil (தமிழ்)</option>
-                <option value="Telugu">Telugu (తెలుగు)</option>
-                <option value="Hindi">Hindi (हिंदी)</option>
-              </select>
+              <label>Full Name</label>
+              <input type="text" id="edit-name" placeholder="Your name">
             </div>
-
-            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Save Changes</button>
-          </form>
-        </div>
-
-        <!-- TAB 2: Custom Measurements -->
-        <div id="tab-measurements" class="tab-pane" style="display: none;">
-          <h3 style="font-size: 1.45rem; color: var(--color-plum); margin-bottom: 8px;">Saved Tailoring Measurements</h3>
-          <p style="font-size: 0.88rem; color: var(--color-muted); margin-bottom: 24px;">Your bespoke measurements are referenced automatically when tailoring custom blouses, lehengas, and gowns.</p>
-
-          <form id="measurements-form">
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-              <div class="form-group">
-                <label class="form-label">Bust / Chest (inches)</label>
-                <input type="number" class="form-control" id="meas-bust" value="36" step="0.5" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Waist (inches)</label>
-                <input type="number" class="form-control" id="meas-waist" value="30" step="0.5" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Hip (inches)</label>
-                <input type="number" class="form-control" id="meas-hip" value="40" step="0.5" required>
-              </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-              <div class="form-group">
-                <label class="form-label">Shoulder Width (inches)</label>
-                <input type="number" class="form-control" id="meas-shoulder" value="14.5" step="0.5" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Blouse Length (inches)</label>
-                <input type="number" class="form-control" id="meas-blouse-len" value="14" step="0.5" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Sleeve Length (inches)</label>
-                <input type="number" class="form-control" id="meas-sleeve" value="10.5" step="0.5" required>
-              </div>
-            </div>
-
             <div class="form-group">
-              <label class="form-label">Special Tailoring Notes / Padding Preference</label>
-              <textarea class="form-control" id="meas-notes" rows="2">Prefers boat neckline, soft padded cups, and concealed side zipper with hooks.</textarea>
-            </div>
-
-            <button type="submit" class="btn btn-gold" style="margin-top: 10px;">Update Measurements Profile</button>
-          </form>
-        </div>
-
-        <!-- TAB 3: Saved Addresses -->
-        <div id="tab-addresses" class="tab-pane" style="display: none;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <div>
-              <h3 style="font-size: 1.45rem; color: var(--color-plum);">Saved Addresses</h3>
-              <p style="font-size: 0.88rem; color: var(--color-muted);">Manage your primary residential and boutique delivery addresses.</p>
-            </div>
-            <button class="btn btn-outline-plum btn-sm" onclick="alert('Address book updated in prototype mode.')">+ Add New Address</button>
-          </div>
-
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div style="background: var(--color-cream); padding: 20px; border-radius: var(--radius-sm); border: 1.5px solid var(--color-gold); position: relative;">
-              <span style="position: absolute; top: 16px; right: 16px; background: var(--color-gold); color: #1A1218; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">DEFAULT ADDRESS</span>
-              <h4 style="font-size: 1.1rem; color: var(--color-plum); margin-bottom: 6px;">Ananya Sundaram (Home)</h4>
-              <p style="font-size: 0.9rem; color: var(--color-charcoal); line-height: 1.6;">
-                44 Gardenia Villa, 3rd Avenue, Anna Nagar,<br>
-                Chennai, Tamil Nadu - 600040<br>
-                Phone: +91 98401 23456
-              </p>
-            </div>
-
-            <div style="background: var(--color-white); padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
-              <h4 style="font-size: 1.1rem; color: var(--color-plum); margin-bottom: 6px;">Yazhi Boutique Studio (Self-Pickup)</h4>
-              <p style="font-size: 0.9rem; color: var(--color-muted); line-height: 1.6;">
-                42 Heritage Weaver Lane, T. Nagar, Chennai, TN - 600017<br>
-                Complimentary fitting room check available during pickup.
-              </p>
+              <label>Phone Number</label>
+              <input type="tel" id="edit-phone" placeholder="Mobile number">
             </div>
           </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="edit-email" placeholder="your@email.com" disabled style="background:var(--blush-lt);color:var(--muted)">
+          </div>
+          <div class="form-group">
+            <label>Birthday (for 30% birthday discount!)</label>
+            <input type="date" id="edit-bday">
+          </div>
+          <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
         </div>
 
-        <!-- TAB 4: Wishlist -->
-        <div id="tab-wishlist" class="tab-pane" style="display: none;">
-          <h3 style="font-size: 1.45rem; color: var(--color-plum); margin-bottom: 8px;">My Saved Wishlist</h3>
-          <p style="font-size: 0.88rem; color: var(--color-muted); margin-bottom: 24px;">Your favorite boutique creations saved for weddings, festivals, and special events.</p>
-          <div id="profile-wishlist-grid" class="product-grid" style="grid-template-columns: repeat(2, 1fr);">
-            <!-- Injected dynamically -->
+        <!-- Recent Orders Quick View -->
+        <div class="section-card" style="margin-top:1.5rem">
+          <h3 style="margin-bottom:1rem">Recent Orders</h3>
+          <div id="recent-orders-list">
+            <p style="color:var(--muted);font-size:.88rem">Loading...</p>
+          </div>
+          <div style="margin-top:1rem">
+            <a href="history.html" class="btn btn-ghost">View All Orders →</a>
           </div>
         </div>
-
       </div>
     </div>
-  </main>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-col">
-        <div class="brand-logo" style="margin-bottom: 16px;"><span class="brand-title" style="color: var(--color-gold-light); font-size: 1.5rem;">Yazhi Collection</span></div>
-        <p>An elite boutique sanctuary dedicated to celebrating Indian fashion heritage, handloom weaving traditions, bespoke bridal trousseaus, and contemporary femininity.</p>
-      </div>
-      <div class="footer-col">
-        <h4>All 8 Collections</h4>
-        <div class="footer-links">
-          <a href="bridal.html" class="footer-link">Bridal Collection</a>
-          <a href="festive.html" class="footer-link">Festive Splendor</a>
-          <a href="party.html" class="footer-link">Party Wear</a>
-          <a href="ethnic.html" class="footer-link">Ethnic Classics</a>
-          <a href="custom-design.html" class="footer-link">Custom Design Studio</a>
-          <a href="saree-collection.html" class="footer-link">Saree Collection</a>
-          <a href="combos.html" class="footer-link">Combos & Pairings</a>
-          <a href="contemporary.html" class="footer-link">Contemporary Wear</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Client Services</h4>
-        <div class="footer-links">
-          <a href="profile.html" class="footer-link">My Account & Profile</a>
-          <a href="history.html" class="footer-link">Track Order / History</a>
-          <a href="cart.html" class="footer-link">Shopping Bag</a>
-          <a href="contact.html" class="footer-link">Studio Consultation</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Luxury Boutique Studio</h4>
-        <p>📍 42 Heritage Weaver Lane, T. Nagar, Chennai, Tamil Nadu 600017</p>
-        <p>📞 +91 98401 23456</p>
-      </div>
+<footer class="yazhi-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2024 Yazhi Collection · Sharmila M · Coimbatore</p>
     </div>
-    <div class="container footer-bottom-bar">
-      <div>&copy; 2026 Yazhi Collection. All Rights Reserved.</div>
-    </div>
-  </footer>
+  </div>
+</footer>
 
-  <script src="js/cart.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/interactions.js"></script>
-  <script>
-    function switchProfileTab(tabName) {
-      document.querySelectorAll('.tab-pane').forEach(el => el.style.display = 'none');
-      document.querySelectorAll('.profile-nav-link').forEach(el => el.classList.remove('active'));
+<script src="js/products.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/orders.js"></script>
+<script src="js/app.js"></script>
+<script>
+const session = yazhiGetSession();
+if (!session || session.role === 'owner') { window.location.href = 'login.html'; }
 
-      const targetPane = document.getElementById('tab-' + tabName);
-      if (targetPane) targetPane.style.display = 'block';
+document.addEventListener('DOMContentLoaded', () => {
+  const profile = yazhiGetFullProfile();
+  if (!profile) return;
 
-      // Set active button
-      event.target.closest('.profile-nav-link').classList.add('active');
+  // Avatar initials
+  const initials = (profile.name || 'Y').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  document.getElementById('profile-initials').textContent = initials;
+  document.getElementById('profile-name').textContent = profile.name || '';
+  document.getElementById('profile-email').textContent = profile.email || '';
 
-      if (tabName === 'wishlist') {
-        renderProfileWishlist();
-      }
-    }
+  // Fill form
+  document.getElementById('edit-name').value = profile.name || '';
+  document.getElementById('edit-phone').value = profile.phone || '';
+  document.getElementById('edit-email').value = profile.email || '';
+  if (profile.birthday) document.getElementById('edit-bday').value = profile.birthday;
 
-    function renderProfileWishlist() {
-      const container = document.getElementById('profile-wishlist-grid');
-      const wishlist = window.YazhiCart ? window.YazhiCart.getWishlist() : [];
-
-      if (!wishlist || wishlist.length === 0) {
-        container.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-            <p style="color: var(--color-muted); margin-bottom: 16px;">You haven't added any items to your wishlist yet.</p>
-            <a href="collections.html" class="btn btn-gold btn-sm">Explore Collections</a>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = wishlist.map(item => `
-        <div class="product-card" data-id="${item.id}" data-title="${item.title}" data-price="${item.price}" data-image="${item.image}" data-category="${item.category}">
-          <div class="product-media-wrap">
-            <img src="${item.image}" alt="${item.title}" class="product-img">
-          </div>
-          <div class="product-details">
-            <h4 class="product-title" style="font-size: 1.15rem;">${item.title}</h4>
-            <div class="product-pricing"><span class="price-current">₹${parseFloat(item.price).toLocaleString()}</span></div>
-            <div class="product-action-buttons" style="margin-top: 10px;">
-              <button class="btn btn-gold btn-sm add-to-cart-btn">Move to Cart</button>
-            </div>
-          </div>
+  // Recent Orders
+  const orders = yazhiGetUserOrders(session.id);
+  const recentEl = document.getElementById('recent-orders-list');
+  if (orders.length === 0) {
+    recentEl.innerHTML = `<div style="text-align:center;padding:1.5rem;color:var(--muted)">
+      <div style="font-size:2rem;margin-bottom:.5rem">📋</div>
+      <p>No orders yet. <a href="collections.html" style="color:var(--plum)">Start shopping!</a></p>
+    </div>`;
+  } else {
+    recentEl.innerHTML = orders.slice(0,3).map(o => `
+      <div class="history-card" style="margin-bottom:.75rem">
+        <div class="history-card-header">
+          <span style="font-size:.82rem;font-weight:600;color:var(--plum)">#${o.id}</span>
+          <span class="order-status-chip status-${o.status}">${o.status}</span>
         </div>
-      `).join('');
-    }
+        <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted)">
+          <span>${new Date(o.createdAt).toLocaleDateString('en-IN',{dateStyle:'medium'})}</span>
+          <strong style="color:var(--plum)">₹${o.total.toLocaleString('en-IN')}</strong>
+        </div>
+        <a href="track-order.html?id=${o.id}" class="btn btn-ghost btn-sm" style="margin-top:.6rem">Track Order</a>
+      </div>`).join('');
+  }
+});
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // Check hash
-      if (window.location.hash === '#wishlist') {
-        switchProfileTab('wishlist');
-      }
-
-      // Profile Form
-      const pForm = document.getElementById('profile-info-form');
-      if (pForm) {
-        pForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          window.showToast('Profile information updated successfully!', 'success');
-        });
-      }
-
-      // Measurements Form
-      const mForm = document.getElementById('measurements-form');
-      if (mForm) {
-        mForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          window.showToast('Boutique tailoring measurements saved!', 'success');
-        });
-      }
-    });
-  </script>
+function saveProfile() {
+  const name = document.getElementById('edit-name').value.trim();
+  const phone = document.getElementById('edit-phone').value.trim();
+  const bday = document.getElementById('edit-bday').value;
+  if (!name || !phone) { yazhiToast('Name and phone are required.', 'error'); return; }
+  yazhiUpdateProfile({ name, phone, birthday: bday || null });
+  document.getElementById('profile-name').textContent = name;
+  yazhiToast('Profile updated successfully! ✔', 'success');
+}
+</script>
 </body>
 </html>

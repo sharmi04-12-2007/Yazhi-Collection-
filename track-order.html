@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Order – Yazhi Collection</title>
+  <meta name="description" content="Track your Yazhi Collection order through 7 real-time status stages.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="offer-banner"><span id="offer-ticker-text"></span></div>
+<header class="yazhi-header">
+  <div class="container header-inner">
+    <a href="home.html" class="logo"><div class="logo-mark">✦</div><div><div class="logo-text">Yazhi Collection</div><div class="logo-sub">Luxury Boutique</div></div></a>
+    <nav class="yazhi-nav">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a>
+      <a href="history.html">My Orders</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="btn-icon">🛍️<span data-cart-badge style="display:none"></span></a>
+      <a href="profile.html" class="btn-icon" data-auth="profile-link" style="display:none">👤</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer">
+  <div class="drawer-header"><div class="logo"><div class="logo-mark" style="width:32px;height:32px;font-size:.85rem">✦</div><div class="logo-text">Yazhi Collection</div></div><button class="drawer-close" id="drawer-close">✕</button></div>
+  <div class="drawer-nav"><a href="home.html">🏠 Home</a><a href="collections.html">👗 Collections</a><a href="history.html">📋 My Orders</a></div>
+</nav>
+
+<div class="page-hero" style="padding:2.5rem 0 3rem">
+  <div class="container">
+    <div class="breadcrumb"><a href="home.html">Home</a><span>/</span><span>Track Order</span></div>
+    <h1>Track Your Order</h1>
+    <p>Enter your Order ID to see real-time status updates</p>
+  </div>
+</div>
+
+<section style="padding-top:2rem">
+  <div class="container">
+    <div style="max-width:640px;margin:0 auto">
+      <!-- Search Box -->
+      <div class="section-card" style="margin-bottom:2rem">
+        <h3>🔍 Find Your Order</h3>
+        <div style="display:flex;gap:.75rem;margin-top:1rem">
+          <input type="text" id="order-id-input" placeholder="Enter Order ID (e.g. YC-ABC123-XY)" style="flex:1;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:.9rem">
+          <button class="btn btn-primary" onclick="trackOrder()">Track →</button>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="track-result" style="display:none">
+        <div class="section-card" id="order-info-card">
+          <!-- Order info header -->
+        </div>
+        <div class="section-card">
+          <h3>📍 Order Timeline</h3>
+          <div id="timeline-display" style="margin-top:1rem"></div>
+        </div>
+        <div style="text-align:center;margin-top:1rem">
+          <a href="https://wa.me/916369685930" target="_blank" class="btn btn-whatsapp">💬 WhatsApp for Update</a>
+          <a href="history.html" class="btn btn-ghost" style="margin-left:.5rem">My Orders</a>
+        </div>
+      </div>
+
+      <div id="track-not-found" style="display:none" class="no-results">
+        <div class="nr-icon">🔍</div>
+        <h3 style="color:var(--plum);margin-bottom:.5rem">Order Not Found</h3>
+        <p style="margin-bottom:1rem">Please check your Order ID and try again, or contact us for help.</p>
+        <a href="https://wa.me/916369685930?text=Hi%20I%20need%20help%20tracking%20my%20order" target="_blank" class="btn btn-whatsapp">WhatsApp Sharmila M</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="yazhi-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2024 Yazhi Collection · Sharmila M · Coimbatore · 6369685930</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/orders.js"></script>
+<script src="js/app.js"></script>
+<script>
+const STATUS_LABELS = { placed:'Order Placed', confirmed:'Confirmed', processing:'Processing', packed:'Packed', shipped:'Shipped / Ready', out:'Out for Delivery', delivered:'Delivered', cancelled:'Cancelled' };
+
+function trackOrder() {
+  const id = document.getElementById('order-id-input').value.trim().toUpperCase();
+  if (!id) { yazhiToast('Please enter an Order ID.', 'warning'); return; }
+
+  const order = yazhiGetOrderById(id);
+  const resultEl = document.getElementById('track-result');
+  const notFoundEl = document.getElementById('track-not-found');
+
+  if (!order) {
+    resultEl.style.display = 'none';
+    notFoundEl.style.display = 'block';
+    return;
+  }
+
+  notFoundEl.style.display = 'none';
+  resultEl.style.display = 'block';
+
+  // Order info card
+  const infoCard = document.getElementById('order-info-card');
+  const statusChip = `<span class="order-status-chip status-${order.status}">${STATUS_LABELS[order.status]||order.status}</span>`;
+  infoCard.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1rem">
+      <div>
+        <h3 style="margin-bottom:.25rem">Order #${order.id}</h3>
+        <div style="font-size:.8rem;color:var(--muted)">Placed on ${new Date(order.createdAt).toLocaleDateString('en-IN',{dateStyle:'long'})}</div>
+      </div>
+      ${statusChip}
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;font-size:.85rem">
+      <div><span style="color:var(--muted);display:block;font-size:.72rem;margin-bottom:.15rem">Customer</span>${order.userName}</div>
+      <div><span style="color:var(--muted);display:block;font-size:.72rem;margin-bottom:.15rem">Items</span>${order.items.length} item${order.items.length>1?'s':''}</div>
+      <div><span style="color:var(--muted);display:block;font-size:.72rem;margin-bottom:.15rem">Total Paid</span><strong style="color:var(--plum)">₹${order.total.toLocaleString('en-IN')}</strong></div>
+      <div><span style="color:var(--muted);display:block;font-size:.72rem;margin-bottom:.15rem">Payment</span>${order.paymentMethod}</div>
+    </div>`;
+
+  // Timeline
+  document.getElementById('timeline-display').innerHTML = yazhiRenderTimeline(order);
+}
+
+// Auto-load from URL param or session
+document.addEventListener('DOMContentLoaded', () => {
+  const urlId = new URLSearchParams(location.search).get('id') || sessionStorage.getItem('yazhi_last_order');
+  if (urlId) {
+    document.getElementById('order-id-input').value = urlId;
+    trackOrder();
+  }
+});
+</script>
+</body>
+</html>

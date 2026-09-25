@@ -1,259 +1,136 @@
-/**
- * Yazhi Collection - Cart, Wishlist & Order State Manager
- * Handles localStorage persistence, quantity calculations, and checkout.
- */
+// ============================================================
+// YAZHI COLLECTION – Cart Engine (PRD v2)
+// Offers: Birthday 30%, Festival 20%, Free Delivery >₹4000,
+//         First Order 50%, Premium >₹9000 → 70% off
+// ============================================================
 
-const STORAGE_KEYS = {
-  CART: 'yazhi_cart',
-  WISHLIST: 'yazhi_wishlist',
-  ORDERS: 'yazhi_orders',
-  DISCOUNT: 'yazhi_active_discount'
-};
+const YAZHI_CART_KEY = 'yazhi_cart';
 
-// Default sample orders so history page has realistic boutique data on first visit
-const DEFAULT_ORDERS = [
-  {
-    id: 'YZ-94821',
-    date: '2026-09-18',
-    status: 'Delivered',
-    statusClass: 'status-delivered',
-    shippingAddress: '44 Gardenia Villa, Anna Nagar, Chennai, TN - 600040',
-    paymentMethod: 'UPI (Google Pay)',
-    total: 24500,
-    items: [
-      {
-        id: 'bridal-kanchi-01',
-        title: 'Mayilkan Kanchipuram Pure Silk Saree',
-        category: 'Bridal',
-        type: 'Kanchipuram Silk Sarees',
-        price: 24500,
-        qty: 1,
-        image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80'
-      }
-    ]
-  },
-  {
-    id: 'YZ-93104',
-    date: '2026-09-22',
-    status: 'In Stitching',
-    statusClass: 'status-stitching',
-    shippingAddress: '12 Emerald Court, Race Course, Coimbatore, TN - 641018',
-    paymentMethod: 'Credit Card (HDFC)',
-    total: 8200,
-    items: [
-      {
-        id: 'custom-blouse-01',
-        title: 'Bespoke Zardozi Hand-Embroidered Blouse',
-        category: 'Custom Design',
-        type: 'Custom-Made Blouses',
-        price: 8200,
-        qty: 1,
-        image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80'
-      }
-    ]
-  }
-];
+// ─── Get / Save Cart ─────────────────────────────────────────
 
-// --- Cart Operations ---
-function getCart() {
-  try {
-    const data = localStorage.getItem(STORAGE_KEYS.CART);
-    return data ? JSON.parse(data) : [];
-  } catch (e) {
-    console.error('Error reading cart:', e);
-    return [];
-  }
+function yazhiGetCart() {
+  return JSON.parse(localStorage.getItem(YAZHI_CART_KEY) || '[]');
 }
 
-function saveCart(cart) {
-  try {
-    localStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(cart));
-    updateHeaderBadges();
-  } catch (e) {
-    console.error('Error saving cart:', e);
-  }
+function yazhiSaveCart(cart) {
+  localStorage.setItem(YAZHI_CART_KEY, JSON.stringify(cart));
+  yazhiUpdateCartBadge();
 }
 
-function addToCart(product, quantity = 1) {
-  const cart = getCart();
-  const qty = parseInt(quantity, 10) || 1;
-  const existingIndex = cart.findIndex(item => item.id === product.id);
+// ─── Add to Cart ─────────────────────────────────────────────
 
-  if (existingIndex > -1) {
-    cart[existingIndex].qty += qty;
+function yazhiAddToCart(product, qty = 1, color = null, size = null) {
+  const cart = yazhiGetCart();
+  const key = `${product.id}_${color}_${size}`;
+  const existing = cart.find(i => i.key === key);
+  if (existing) {
+    existing.qty = Math.min(existing.qty + qty, 10);
   } else {
     cart.push({
+      key,
       id: product.id,
-      title: product.title,
-      category: product.category || 'Collection',
-      type: product.type || '',
-      price: parseFloat(product.price),
-      originalPrice: product.originalPrice ? parseFloat(product.originalPrice) : null,
-      image: product.image,
-      tagline: product.tagline || '',
-      qty: qty
-    });
-  }
-
-  saveCart(cart);
-  if (window.showToast) {
-    window.showToast(`"${product.title}" added to your cart (${qty})`, 'success');
-  }
-}
-
-function updateCartQuantity(productId, quantity) {
-  const cart = getCart();
-  const qty = parseInt(quantity, 10);
-  const itemIndex = cart.findIndex(item => item.id === productId);
-
-  if (itemIndex > -1) {
-    if (qty <= 0) {
-      cart.splice(itemIndex, 1);
-    } else {
-      cart[itemIndex].qty = qty;
-    }
-    saveCart(cart);
-  }
-}
-
-function removeFromCart(productId) {
-  let cart = getCart();
-  const removedItem = cart.find(item => item.id === productId);
-  cart = cart.filter(item => item.id !== productId);
-  saveCart(cart);
-  if (window.showToast && removedItem) {
-    window.showToast(`Removed "${removedItem.title}" from cart`, 'info');
-  }
-}
-
-function clearCart() {
-  saveCart([]);
-}
-
-function getCartCount() {
-  const cart = getCart();
-  return cart.reduce((total, item) => total + (item.qty || 1), 0);
-}
-
-function getCartSubtotal() {
-  const cart = getCart();
-  return cart.reduce((total, item) => total + (item.price * (item.qty || 1)), 0);
-}
-
-// --- Wishlist Operations ---
-function getWishlist() {
-  try {
-    const data = localStorage.getItem(STORAGE_KEYS.WISHLIST);
-    return data ? JSON.parse(data) : [];
-  } catch (e) {
-    return [];
-  }
-}
-
-function saveWishlist(list) {
-  try {
-    localStorage.setItem(STORAGE_KEYS.WISHLIST, JSON.stringify(list));
-    updateHeaderBadges();
-  } catch (e) {}
-}
-
-function toggleWishlist(product) {
-  let wishlist = getWishlist();
-  const exists = wishlist.some(item => item.id === product.id);
-
-  if (exists) {
-    wishlist = wishlist.filter(item => item.id !== product.id);
-    saveWishlist(wishlist);
-    if (window.showToast) window.showToast(`Removed "${product.title}" from wishlist`, 'info');
-    return false;
-  } else {
-    wishlist.push({
-      id: product.id,
-      title: product.title,
+      name: product.name,
       price: product.price,
-      image: product.image,
-      category: product.category
+      color: color || (product.colors && product.colors[0]) || 'Default',
+      size: size || (product.sizes && product.sizes[0]) || 'Free Size',
+      qty,
+      collection: product.collection || ''
     });
-    saveWishlist(wishlist);
-    if (window.showToast) window.showToast(`Saved "${product.title}" to wishlist`, 'success');
-    return true;
+  }
+  yazhiSaveCart(cart);
+  yazhiToast(`${product.name} added to cart! 🛍️`, 'success');
+}
+
+// ─── Remove from Cart ─────────────────────────────────────────
+
+function yazhiRemoveFromCart(key) {
+  let cart = yazhiGetCart();
+  cart = cart.filter(i => i.key !== key);
+  yazhiSaveCart(cart);
+}
+
+// ─── Update Qty ───────────────────────────────────────────────
+
+function yazhiUpdateCartQty(key, newQty) {
+  const cart = yazhiGetCart();
+  const item = cart.find(i => i.key === key);
+  if (item) {
+    if (newQty < 1) { yazhiRemoveFromCart(key); return; }
+    item.qty = Math.min(newQty, 10);
+    yazhiSaveCart(cart);
   }
 }
 
-function isInWishlist(productId) {
-  const wishlist = getWishlist();
-  return wishlist.some(item => item.id === productId);
+// ─── Clear Cart ───────────────────────────────────────────────
+
+function yazhiClearCart() {
+  localStorage.removeItem(YAZHI_CART_KEY);
+  yazhiUpdateCartBadge();
 }
 
-// --- Orders Operations ---
-function getOrders() {
-  try {
-    const data = localStorage.getItem(STORAGE_KEYS.ORDERS);
-    if (!data) {
-      localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(DEFAULT_ORDERS));
-      return DEFAULT_ORDERS;
+// ─── Totals & Offer Calculation ───────────────────────────────
+
+function yazhiCalculateTotals(cart, offerCode, userId) {
+  const subtotal = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+
+  let discount = 0;
+  let offerLabel = '';
+  let appliedOffer = null;
+
+  const users = JSON.parse(localStorage.getItem('yazhi_users') || '[]');
+  const user = users.find(u => u.id === userId);
+  const isFirstOrder = user && !user.firstOrderDone;
+
+  // Auto-apply best discount
+  if (subtotal >= 9000) {
+    discount = Math.round(subtotal * 0.70);
+    offerLabel = '70% Premium Discount Applied';
+    appliedOffer = { discount: 0.70, label: offerLabel };
+  } else if (isFirstOrder && !offerCode) {
+    discount = Math.round(subtotal * 0.50);
+    offerLabel = '50% First Order Discount Applied';
+    appliedOffer = { discount: 0.50, label: offerLabel };
+  }
+
+  // Manual coupon codes override auto
+  if (offerCode) {
+    const code = offerCode.toUpperCase().trim();
+    if (code === 'BDAY30') {
+      discount = Math.round(subtotal * 0.30);
+      offerLabel = '30% Birthday Special Applied';
+      appliedOffer = { discount: 0.30, label: offerLabel };
+    } else if (code === 'FESTIVE20') {
+      discount = Math.round(subtotal * 0.20);
+      offerLabel = '20% Festival Discount Applied';
+      appliedOffer = { discount: 0.20, label: offerLabel };
+    } else if (code === 'YAZHI50' && isFirstOrder) {
+      discount = Math.round(subtotal * 0.50);
+      offerLabel = '50% First Order Discount Applied';
+      appliedOffer = { discount: 0.50, label: offerLabel };
+    } else if (code === 'PREMIUM70' && subtotal >= 9000) {
+      discount = Math.round(subtotal * 0.70);
+      offerLabel = '70% Premium Discount Applied';
+      appliedOffer = { discount: 0.70, label: offerLabel };
     }
-    return JSON.parse(data);
-  } catch (e) {
-    return DEFAULT_ORDERS;
   }
+
+  const discountedSubtotal = subtotal - discount;
+  const delivery = discountedSubtotal >= 4000 ? 0 : 99;
+  const total = discountedSubtotal + delivery;
+
+  return { subtotal, discount, offerLabel, appliedOffer, delivery, total, itemCount: cart.reduce((s,i)=>s+i.qty,0) };
 }
 
-function addOrder(orderData) {
-  const orders = getOrders();
-  const newOrder = {
-    id: 'YZ-' + Math.floor(10000 + Math.random() * 90000),
-    date: new Date().toISOString().split('T')[0],
-    status: 'Processing',
-    statusClass: 'status-shipped',
-    ...orderData
-  };
-  orders.unshift(newOrder);
-  try {
-    localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders));
-  } catch (e) {}
-  return newOrder;
-}
+// ─── Cart Badge ───────────────────────────────────────────────
 
-// --- Header Badges Update ---
-function updateHeaderBadges() {
-  const cartCount = getCartCount();
-  const wishlist = getWishlist();
-  const wishlistCount = wishlist.length;
-
-  document.querySelectorAll('.cart-badge').forEach(badge => {
-    badge.textContent = cartCount;
-    badge.style.display = cartCount > 0 ? 'flex' : 'none';
-    badge.classList.remove('badge-pulse');
-    void badge.offsetWidth;
-    badge.classList.add('badge-pulse');
-  });
-
-  document.querySelectorAll('.wishlist-badge').forEach(badge => {
-    badge.textContent = wishlistCount;
-    badge.style.display = wishlistCount > 0 ? 'flex' : 'none';
+function yazhiUpdateCartBadge() {
+  const cart = yazhiGetCart();
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  document.querySelectorAll('[data-cart-badge]').forEach(el => {
+    el.textContent = total > 0 ? total : '';
+    el.style.display = total > 0 ? 'flex' : 'none';
   });
 }
 
-// Initial badge update on load
-document.addEventListener('DOMContentLoaded', () => {
-  updateHeaderBadges();
-});
-
-// Expose globally
-window.YazhiCart = {
-  getCart,
-  saveCart,
-  addToCart,
-  updateCartQuantity,
-  removeFromCart,
-  clearCart,
-  getCartCount,
-  getCartSubtotal,
-  getWishlist,
-  toggleWishlist,
-  isInWishlist,
-  getOrders,
-  addOrder,
-  updateHeaderBadges
-};
+// Auto-init badge on load
+document.addEventListener('DOMContentLoaded', yazhiUpdateCartBadge);

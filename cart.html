@@ -3,411 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shopping Cart | Yazhi Collection Boutique</title>
-  <meta name="description" content="View and manage your selected luxury boutique items at Yazhi Collection. Complete checkout with complimentary express delivery.">
+  <title>My Cart – Yazhi Collection</title>
+  <meta name="description" content="View your cart and proceed to checkout at Yazhi Collection.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <!-- Announcement Bar -->
-  <div class="announcement-bar">
-    <div class="announcement-content">
-      <span class="announcement-badge">Complimentary Shipping</span>
-      <span>✨ Free Express Boutique Delivery on all orders above ₹2,999 | Code: <strong>YAZHI10</strong></span>
-    </div>
-    <button class="announcement-close">&times;</button>
-  </div>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-container">
-      <a href="home.html" class="brand-logo">
-        <svg class="brand-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polygon points="50,15 62,38 88,38 67,54 75,80 50,65 25,80 33,54 12,38 38,38" fill="rgba(200,164,93,0.18)" stroke="var(--color-gold)" />
-          <circle cx="50" cy="48" r="12" fill="none" stroke="var(--color-gold-dark)" />
-        </svg>
-        <div class="brand-text">
-          <span class="brand-title">Yazhi Collection</span>
-          <span class="brand-tagline">Women's Luxury Boutique</span>
-        </div>
-      </a>
-
-      <nav class="nav-menu">
-        <a href="home.html" class="nav-link">Home</a>
-        <div class="nav-item-dropdown">
-          <a href="collections.html" class="nav-link">Collections &#9662;</a>
-          <div class="dropdown-menu">
-            <a href="bridal.html" class="dropdown-link"><span>Bridal Collection</span><span class="dropdown-badge">5 Types</span></a>
-            <a href="festive.html" class="dropdown-link"><span>Festive Splendor</span><span class="dropdown-badge">5 Types</span></a>
-            <a href="party.html" class="dropdown-link"><span>Party Glamour</span><span class="dropdown-badge">5 Types</span></a>
-            <a href="ethnic.html" class="dropdown-link"><span>Ethnic Classics</span><span class="dropdown-badge">5 Types</span></a>
-            <a href="custom-design.html" class="dropdown-link"><span>Custom Design</span><span class="dropdown-badge">Bespoke</span></a>
-            <a href="saree-collection.html" class="dropdown-link"><span>Saree Collection</span><span class="dropdown-badge">Handloom</span></a>
-            <a href="combos.html" class="dropdown-link"><span>Combos & Pairings</span><span class="dropdown-badge">Trending</span></a>
-            <a href="contemporary.html" class="dropdown-link"><span>Contemporary Wear</span><span class="dropdown-badge">Modern</span></a>
-          </div>
-        </div>
-        <a href="home.html#new-arrivals" class="nav-link">New Arrivals</a>
-        <a href="custom-design.html" class="nav-link">Bespoke Studio</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
-
-      <div class="header-actions">
-        <button class="action-btn search-trigger-btn" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        <a href="profile.html#wishlist" class="action-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg><span class="action-badge wishlist-badge" style="display: none;">0</span></a>
-        <a href="cart.html" class="action-btn active" style="color: var(--color-plum);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg><span class="action-badge cart-badge" style="display: none;">0</span></a>
-        <a href="history.html" class="action-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></a>
-        <a href="profile.html" class="action-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
-        <button class="mobile-toggle"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer -->
-  <div class="mobile-nav-drawer">
-    <div class="mobile-drawer-header">
-      <div class="brand-text"><span class="brand-title" style="font-size: 1.35rem;">Yazhi Collection</span></div>
-      <button class="mobile-close-btn">&times;</button>
-    </div>
-    <div class="mobile-links">
-      <a href="home.html" class="mobile-nav-link">Home</a>
-      <a href="collections.html" class="mobile-nav-link">All 8 Collections &rarr;</a>
-      <div class="mobile-sublinks">
-        <a href="bridal.html" class="mobile-sublink">• Bridal Collection</a>
-        <a href="festive.html" class="mobile-sublink">• Festive Splendor</a>
-        <a href="party.html" class="mobile-sublink">• Party Glamour</a>
-        <a href="ethnic.html" class="mobile-sublink">• Ethnic Classics</a>
-        <a href="custom-design.html" class="mobile-sublink">• Custom Design</a>
-        <a href="saree-collection.html" class="mobile-sublink">• Saree Collection</a>
-        <a href="combos.html" class="mobile-sublink">• Combos & Pairings</a>
-        <a href="contemporary.html" class="mobile-sublink">• Contemporary</a>
-      </div>
-      <a href="cart.html" class="mobile-nav-link active">Shopping Cart</a>
-      <a href="profile.html" class="mobile-nav-link">My Profile</a>
-      <a href="history.html" class="mobile-nav-link">Order History</a>
-      <a href="contact.html" class="mobile-nav-link">Contact</a>
+<div class="offer-banner"><span id="offer-ticker-text"></span></div>
+<header class="yazhi-header">
+  <div class="container header-inner">
+    <a href="home.html" class="logo"><div class="logo-mark">✦</div><div><div class="logo-text">Yazhi Collection</div><div class="logo-sub">Luxury Boutique</div></div></a>
+    <nav class="yazhi-nav">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a>
+      <a href="new-arrivals.html">New Arrivals</a><a href="enquiry.html">Enquiry</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="btn-icon">🛍️<span data-cart-badge style="display:none"></span></a>
+      <a href="login.html" class="btn-icon" data-auth="login-link">👤</a>
+      <a href="profile.html" class="btn-icon" data-auth="profile-link" style="display:none">👤</a>
+      <button class="btn-icon" data-auth="logout-link" style="display:none" onclick="yazhiLogout()">🚪</button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
   </div>
-  <div class="drawer-backdrop"></div>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer">
+  <div class="drawer-header"><div class="logo"><div class="logo-mark" style="width:32px;height:32px;font-size:.85rem">✦</div><div class="logo-text">Yazhi Collection</div></div><button class="drawer-close" id="drawer-close">✕</button></div>
+  <div class="drawer-nav"><a href="home.html">🏠 Home</a><a href="collections.html">👗 Collections</a><a href="new-arrivals.html">✨ New Arrivals</a><a href="cart.html" class="active">🛍️ Cart</a><div class="drawer-divider"></div><a href="enquiry.html">💬 Enquiry</a><a href="contact.html">📍 Contact</a></div>
+</nav>
 
-  <!-- Page Header -->
-  <section style="background: var(--color-plum); color: var(--color-white); padding: 40px 0;">
-    <div class="container">
-      <div class="breadcrumbs" style="margin-bottom: 8px;">
-        <a href="home.html">Home</a>
-        <span class="breadcrumb-separator">&gt;</span>
-        <span>Shopping Cart</span>
-      </div>
-      <h1 style="color: var(--color-white); font-size: 2.2rem;">Your Luxury Shopping Bag</h1>
+<div class="page-hero" style="padding:2.5rem 0 3rem">
+  <div class="container">
+    <div class="breadcrumb"><a href="home.html">Home</a><span>/</span><span>Cart</span></div>
+    <h1>My Cart 🛍️</h1>
+  </div>
+</div>
+
+<section style="padding-top:2rem">
+  <div class="container">
+    <div id="cart-empty" class="empty-cart" style="display:none">
+      <div class="empty-icon">🛍️</div>
+      <h3 style="color:var(--plum);margin-bottom:.5rem">Your cart is empty</h3>
+      <p style="color:var(--muted);margin-bottom:1.5rem">Explore our collections and add your favourite pieces!</p>
+      <a href="collections.html" class="btn btn-primary btn-lg">Browse Collections</a>
     </div>
-  </section>
 
-  <!-- Cart Content Area -->
-  <main class="container section-padding">
-    <div class="cart-layout" id="cart-container">
-      <!-- Injected dynamically by Cart Page Script -->
-    </div>
-  </main>
+    <div class="cart-layout" id="cart-content">
+      <div id="cart-items-list"></div>
+      <div class="cart-summary" id="cart-summary">
+        <h3 style="font-family:var(--serif);color:var(--plum);margin-bottom:1.25rem;font-size:1.15rem">Order Summary</h3>
 
-  <!-- Multi-Step Checkout Modal -->
-  <div id="checkout-modal" class="modal-overlay">
-    <div class="modal-card" style="max-width: 620px;">
-      <div class="modal-header">
-        <div>
-          <h3 style="font-size: 1.4rem; color: var(--color-plum);">Boutique Order Checkout</h3>
-          <p style="font-size: 0.82rem; color: var(--color-muted);">Fast, safe and insured worldwide luxury delivery</p>
+        <div class="coupon-row">
+          <input type="text" id="coupon-input" placeholder="Enter coupon code" style="text-transform:uppercase">
+          <button class="btn btn-gold btn-sm" onclick="applyCoupon()">Apply</button>
         </div>
-        <button class="modal-close-btn">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="checkout-form">
-          <h4 style="font-size: 1.1rem; color: var(--color-plum); margin-bottom: 12px; border-bottom: 1px solid var(--color-border); padding-bottom: 6px;">1. Shipping Information</h4>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div class="form-group">
-              <label class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="co-name" value="Ananya Sundaram" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Phone / WhatsApp</label>
-              <input type="tel" class="form-control" id="co-phone" value="+91 98401 23456" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Delivery Street Address</label>
-            <textarea class="form-control" id="co-address" rows="2" required>44 Gardenia Villa, Anna Nagar, Chennai, TN - 600040</textarea>
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div class="form-group">
-              <label class="form-label">City</label>
-              <input type="text" class="form-control" id="co-city" value="Chennai" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">PIN / Postal Code</label>
-              <input type="text" class="form-control" id="co-pincode" value="600040" required>
-            </div>
-          </div>
+        <div id="coupon-msg" style="font-size:.78rem;margin-bottom:.5rem"></div>
 
-          <h4 style="font-size: 1.1rem; color: var(--color-plum); margin: 20px 0 12px 0; border-bottom: 1px solid var(--color-border); padding-bottom: 6px;">2. Payment Method</h4>
-          <div class="form-group">
-            <select class="form-control" id="co-payment">
-              <option value="UPI (Google Pay / PhonePe / Paytm)">UPI (Google Pay / PhonePe / Paytm QR)</option>
-              <option value="Credit / Debit Card (Visa / Mastercard / Amex)">Credit / Debit Card (Visa, Mastercard, Amex)</option>
-              <option value="Net Banking (HDFC, ICICI, SBI)">Net Banking (HDFC, ICICI, SBI)</option>
-              <option value="Cash on Delivery / Boutique Concierge Verification">Cash on Delivery / Boutique Concierge Verification</option>
-            </select>
-          </div>
+        <div id="summary-rows"></div>
 
-          <div style="background: var(--color-cream); padding: 16px; border-radius: 8px; margin: 20px 0;">
-            <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--color-plum); font-size: 1.2rem;">
-              <span>Total Payable Amount:</span>
-              <span id="co-final-total">₹0</span>
-            </div>
-            <div style="font-size: 0.8rem; color: var(--color-gold-dark); margin-top: 6px;">✨ Includes complimentary luxury satin box packaging & insured transit</div>
-          </div>
+        <button class="btn btn-primary btn-full" style="margin-top:1rem" onclick="proceedCheckout()">Proceed to Checkout →</button>
+        <a href="collections.html" class="btn btn-ghost btn-full" style="margin-top:.6rem">Continue Shopping</a>
 
-          <button type="submit" class="btn btn-gold btn-block btn-lg">Place Boutique Order</button>
-        </form>
+        <div class="alert alert-info" style="margin-top:1.25rem;font-size:.78rem">
+          🚚 Free delivery on orders above ₹4,000 · 💎 Up to 70% off on orders above ₹9,000
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-col">
-        <div class="brand-logo" style="margin-bottom: 16px;">
-          <span class="brand-title" style="color: var(--color-gold-light); font-size: 1.5rem;">Yazhi Collection</span>
-        </div>
-        <p>An elite boutique sanctuary dedicated to celebrating Indian fashion heritage, handloom weaving traditions, bespoke bridal trousseaus, and contemporary femininity.</p>
-      </div>
-      <div class="footer-col">
-        <h4>All 8 Collections</h4>
-        <div class="footer-links">
-          <a href="bridal.html" class="footer-link">Bridal Collection</a>
-          <a href="festive.html" class="footer-link">Festive Splendor</a>
-          <a href="party.html" class="footer-link">Party Wear</a>
-          <a href="ethnic.html" class="footer-link">Ethnic Classics</a>
-          <a href="custom-design.html" class="footer-link">Custom Design Studio</a>
-          <a href="saree-collection.html" class="footer-link">Saree Collection</a>
-          <a href="combos.html" class="footer-link">Combos & Pairings</a>
-          <a href="contemporary.html" class="footer-link">Contemporary Wear</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Client Services</h4>
-        <div class="footer-links">
-          <a href="profile.html" class="footer-link">My Account & Profile</a>
-          <a href="history.html" class="footer-link">Track Order / History</a>
-          <a href="cart.html" class="footer-link">Shopping Bag</a>
-          <a href="contact.html" class="footer-link">Studio Consultation</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Luxury Boutique Studio</h4>
-        <p>📍 42 Heritage Weaver Lane, T. Nagar, Chennai, Tamil Nadu 600017</p>
-        <p>📞 +91 98401 23456</p>
-      </div>
+<footer class="yazhi-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2024 Yazhi Collection · Sharmila M · Coimbatore</p>
     </div>
-    <div class="container footer-bottom-bar">
-      <div>&copy; 2026 Yazhi Collection. All Rights Reserved.</div>
-    </div>
-  </footer>
+  </div>
+</footer>
 
-  <script src="js/cart.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/interactions.js"></script>
-  <script>
-    // Cart Page Specific Logic
-    let appliedDiscountPct = 0;
+<script src="js/products.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+<script>
+let couponCode = '';
+const session = yazhiGetSession();
 
-    function renderCartPage() {
-      const container = document.getElementById('cart-container');
-      const cart = window.YazhiCart.getCart();
+function renderCart() {
+  const cart = yazhiGetCart();
+  const emptyEl = document.getElementById('cart-empty');
+  const contentEl = document.getElementById('cart-content');
+  const listEl = document.getElementById('cart-items-list');
 
-      if (cart.length === 0) {
-        container.innerHTML = `
-          <div class="cart-items-card empty-cart-view" style="grid-column: 1 / -1;">
-            <div class="empty-cart-icon">🛍️</div>
-            <h3 style="font-size: 1.8rem; color: var(--color-plum); margin-bottom: 8px;">Your Shopping Bag is Empty</h3>
-            <p style="color: var(--color-muted); max-width: 480px; margin: 0 auto 24px auto;">
-              Explore our 8 signature collections of handcrafted sarees, royal bridal lehengas, and bespoke boutique couture.
-            </p>
-            <a href="collections.html" class="btn btn-gold btn-lg">Explore All Collections</a>
-          </div>
-        `;
-        return;
-      }
+  if (cart.length === 0) {
+    emptyEl.style.display = 'block';
+    contentEl.style.display = 'none';
+    return;
+  }
+  emptyEl.style.display = 'none';
+  contentEl.style.display = 'grid';
 
-      const subtotal = window.YazhiCart.getCartSubtotal();
-      const shipping = subtotal >= 2999 ? 0 : 150;
-      const discountAmount = Math.round(subtotal * (appliedDiscountPct / 100));
-      const grandTotal = Math.max(0, subtotal - discountAmount + shipping);
-
-      const itemsHtml = cart.map(item => `
-        <div class="cart-item-row" data-id="${item.id}">
-          <img src="${item.image}" alt="${item.title}" class="cart-item-img">
-          <div class="cart-item-info">
-            <div class="cart-item-category">${item.category} • ${item.type || ''}</div>
-            <h4>${item.title}</h4>
-            <div class="cart-item-unit-price">₹${item.price.toLocaleString()} each</div>
-          </div>
-          <div class="qty-selector">
-            <button class="qty-btn minus" onclick="changeItemQty('${item.id}', -1)">&minus;</button>
-            <input type="text" class="qty-input" value="${item.qty}" readonly>
-            <button class="qty-btn plus" onclick="changeItemQty('${item.id}', 1)">&plus;</button>
-          </div>
-          <div class="cart-item-total">₹${(item.price * item.qty).toLocaleString()}</div>
-          <button class="cart-remove-btn" onclick="deleteCartItem('${item.id}')" title="Remove">&times;</button>
+  listEl.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-thumb">
+        <div class="product-img-placeholder" data-label="${item.name}" data-color="#3B1F3F" style="width:100%;height:100%;border-radius:var(--r-sm)"></div>
+      </div>
+      <div class="cart-item-info">
+        <h4>${item.name}</h4>
+        <div class="cart-item-meta">${item.color} · ${item.size}</div>
+        <div style="font-weight:700;color:var(--plum);margin-bottom:.5rem">₹${item.price.toLocaleString('en-IN')}</div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('${item.key}',-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${item.key}',1)">+</button>
+          <button onclick="yazhiRemoveFromCart('${item.key}');renderCart();" style="background:none;color:var(--danger);font-size:.8rem;margin-left:.5rem;cursor:pointer">Remove</button>
         </div>
-      `).join('');
+      </div>
+      <div style="font-weight:700;color:var(--plum);white-space:nowrap">₹${(item.price*item.qty).toLocaleString('en-IN')}</div>
+    </div>`).join('');
 
-      container.innerHTML = `
-        <div class="cart-items-card">
-          <div class="cart-card-header">
-            <h3>Cart Items (${cart.length})</h3>
-            <button class="btn btn-outline-plum btn-sm" onclick="emptyAllCart()">Clear Bag</button>
-          </div>
-          <div class="cart-items-list">
-            ${itemsHtml}
-          </div>
-          <div style="margin-top: 24px;">
-            <a href="collections.html" style="font-size: 0.9rem; font-weight: 600; color: var(--color-wine);">&larr; Continue Exploring Collections</a>
-          </div>
-        </div>
+  yazhiFillPlaceholders();
+  renderSummary(cart);
+}
 
-        <div class="cart-summary-card">
-          <h3 style="font-size: 1.35rem; color: var(--color-plum); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--color-border);">Order Summary</h3>
-          
-          <div class="summary-line">
-            <span>Bag Subtotal:</span>
-            <span>₹${subtotal.toLocaleString()}</span>
-          </div>
+function renderSummary(cart) {
+  const userId = session ? session.id : null;
+  const totals = yazhiCalculateTotals(cart, couponCode, userId);
+  const summaryEl = document.getElementById('summary-rows');
+  summaryEl.innerHTML = `
+    <div class="summary-row"><span>Subtotal (${totals.itemCount} item${totals.itemCount>1?'s':''})</span><span>₹${totals.subtotal.toLocaleString('en-IN')}</span></div>
+    ${totals.discount>0 ? `<div class="summary-row saving"><span>🎉 ${totals.offerLabel}</span><span>−₹${totals.discount.toLocaleString('en-IN')}</span></div>` : ''}
+    <div class="summary-row"><span>Delivery</span><span>${totals.delivery===0 ? '<span style="color:var(--ok);font-weight:600">FREE</span>' : '₹'+totals.delivery}</span></div>
+    <div class="summary-row total"><span>Total</span><span>₹${totals.total.toLocaleString('en-IN')}</span></div>`;
+}
 
-          ${discountAmount > 0 ? `
-          <div class="summary-line" style="color: var(--color-success); font-weight: 600;">
-            <span>Coupon Discount (${appliedDiscountPct}%):</span>
-            <span>-₹${discountAmount.toLocaleString()}</span>
-          </div>
-          ` : ''}
+function changeQty(key, delta) {
+  const cart = yazhiGetCart();
+  const item = cart.find(i => i.key === key);
+  if (item) yazhiUpdateCartQty(key, item.qty + delta);
+  renderCart();
+}
 
-          <div class="summary-line">
-            <span>Estimated Shipping:</span>
-            <span>${shipping === 0 ? '<span style="color:var(--color-success); font-weight:700;">FREE (Orders &gt; ₹2,999)</span>' : '₹' + shipping}</span>
-          </div>
+function applyCoupon() {
+  const input = document.getElementById('coupon-input').value.trim().toUpperCase();
+  const valid = ['BDAY30', 'FESTIVE20', 'YAZHI50', 'PREMIUM70'];
+  const msgEl = document.getElementById('coupon-msg');
+  if (!input) { msgEl.style.color='var(--danger)'; msgEl.textContent='Please enter a coupon code.'; return; }
+  if (valid.includes(input)) {
+    couponCode = input;
+    msgEl.style.color = 'var(--ok)';
+    msgEl.textContent = '✔ Coupon applied!';
+    renderCart();
+  } else {
+    couponCode = '';
+    msgEl.style.color = 'var(--danger)';
+    msgEl.textContent = '✖ Invalid coupon code.';
+  }
+}
 
-          <div class="coupon-box">
-            <div style="font-size: 0.85rem; font-weight: 600; color: var(--color-plum);">Have a Boutique Coupon Code?</div>
-            <div style="font-size: 0.75rem; color: var(--color-muted);">Try <strong>YAZHI10</strong> (10% off) or <strong>FESTIVE20</strong> (20% off)</div>
-            <div class="coupon-input-group">
-              <input type="text" id="coupon-code-input" class="coupon-input" placeholder="Enter coupon" value="${appliedDiscountPct === 10 ? 'YAZHI10' : (appliedDiscountPct === 20 ? 'FESTIVE20' : '')}">
-              <button class="btn btn-outline-plum btn-sm" onclick="applyCoupon()">Apply</button>
-            </div>
-          </div>
+function proceedCheckout() {
+  if (!session) {
+    yazhiToast('Please login to proceed to checkout.', 'warning');
+    setTimeout(() => { window.location.href = 'login.html?redirect=checkout.html'; }, 1000);
+    return;
+  }
+  // Save applied coupon to session storage for checkout
+  sessionStorage.setItem('yazhi_coupon', couponCode);
+  window.location.href = 'checkout.html';
+}
 
-          <div class="summary-line total-line">
-            <span>Grand Total:</span>
-            <span>₹${grandTotal.toLocaleString()}</span>
-          </div>
-
-          <button class="btn btn-gold btn-block btn-lg" style="margin-top: 20px;" onclick="openCheckoutModal(${grandTotal})">
-            <span>Proceed to Checkout</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
-      `;
-    }
-
-    function changeItemQty(id, delta) {
-      const cart = window.YazhiCart.getCart();
-      const item = cart.find(i => i.id === id);
-      if (item) {
-        const newQty = item.qty + delta;
-        window.YazhiCart.updateCartQuantity(id, newQty);
-        renderCartPage();
-      }
-    }
-
-    function deleteCartItem(id) {
-      window.YazhiCart.removeFromCart(id);
-      renderCartPage();
-    }
-
-    function emptyAllCart() {
-      if (confirm('Are you sure you want to empty your shopping bag?')) {
-        window.YazhiCart.clearCart();
-        renderCartPage();
-      }
-    }
-
-    function applyCoupon() {
-      const input = document.getElementById('coupon-code-input');
-      const code = input ? input.value.trim().toUpperCase() : '';
-      if (code === 'YAZHI10') {
-        appliedDiscountPct = 10;
-        window.showToast('Coupon YAZHI10 applied! 10% discount added.', 'success');
-      } else if (code === 'FESTIVE20') {
-        appliedDiscountPct = 20;
-        window.showToast('Coupon FESTIVE20 applied! 20% festive discount added.', 'success');
-      } else {
-        window.showToast('Invalid coupon code. Try YAZHI10 or FESTIVE20.', 'error');
-        appliedDiscountPct = 0;
-      }
-      renderCartPage();
-    }
-
-    function openCheckoutModal(total) {
-      const modal = document.getElementById('checkout-modal');
-      const totalEl = document.getElementById('co-final-total');
-      if (totalEl) totalEl.textContent = '₹' + total.toLocaleString();
-      if (modal) modal.classList.add('active');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCartPage();
-
-      // Checkout form submit
-      const form = document.getElementById('checkout-form');
-      const modal = document.getElementById('checkout-modal');
-      const closeBtn = modal ? modal.querySelector('.modal-close-btn') : null;
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-      }
-      if (modal) {
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) modal.classList.remove('active');
-        });
-      }
-
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const name = document.getElementById('co-name').value;
-          const address = document.getElementById('co-address').value;
-          const payment = document.getElementById('co-payment').value;
-          const cart = window.YazhiCart.getCart();
-          const subtotal = window.YazhiCart.getCartSubtotal();
-          const shipping = subtotal >= 2999 ? 0 : 150;
-          const discountAmount = Math.round(subtotal * (appliedDiscountPct / 100));
-          const grandTotal = Math.max(0, subtotal - discountAmount + shipping);
-
-          const order = window.YazhiCart.addOrder({
-            shippingAddress: address,
-            customerName: name,
-            paymentMethod: payment,
-            total: grandTotal,
-            items: cart
-          });
-
-          window.YazhiCart.clearCart();
-          modal.classList.remove('active');
-          window.showToast(`Order #${order.id} placed successfully! Directing to Order History...`, 'success');
-
-          setTimeout(() => {
-            window.location.href = 'history.html';
-          }, 1500);
-        });
-      }
-    });
-  </script>
+document.addEventListener('DOMContentLoaded', renderCart);
+</script>
 </body>
 </html>

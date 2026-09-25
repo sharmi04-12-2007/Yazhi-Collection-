@@ -3,100 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yazhi Collection | Elegant Women's Boutique Experience</title>
-  <meta name="description" content="Discover Yazhi Collection - an exquisite women's boutique showcasing royal bridal wear, festive splendor, handcrafted sarees, bespoke blouses and contemporary styles.">
+  <title>Yazhi Collection – Luxury Women's Boutique, Coimbatore</title>
+  <meta name="description" content="Yazhi Collection by Sharmila M – Premium women's boutique in Coimbatore. Bridal wear, sarees, ethnic, festive & custom design. Shop 9 AM to 9 PM.">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Specific Glance Screen Enhancements */
-    .enter-btn-glow {
-      position: relative;
-      overflow: hidden;
-    }
-    .enter-btn-glow::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(60deg, transparent, rgba(255,255,255,0.3), transparent);
-      transform: rotate(30deg);
-      animation: shineLoop 4s infinite linear;
-    }
-    @keyframes shineLoop {
-      0% { transform: translateX(-100%) rotate(30deg); }
-      20% { transform: translateX(100%) rotate(30deg); }
-      100% { transform: translateX(100%) rotate(30deg); }
-    }
-    .feature-pill-strip {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-    }
-    .feature-pill {
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-gold-light);
-      background: rgba(255,255,255,0.06);
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(200, 164, 93, 0.25);
-    }
+    body{margin:0;overflow:hidden}
+    .glance-wrap{position:fixed;inset:0;background:linear-gradient(135deg,#261129 0%,#3B1F3F 50%,#7A3455 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+    .glance-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+    .particle{position:absolute;border-radius:50%;animation:float linear infinite;opacity:.12}
+    @keyframes float{0%{transform:translateY(100vh) rotate(0)}100%{transform:translateY(-100px) rotate(360deg)}}
+    .ornament{font-size:1.4rem;color:rgba(201,164,92,.3);animation:shimmer 3s ease-in-out infinite;margin-bottom:1.5rem}
+    @keyframes shimmer{0%,100%{opacity:.3}50%{opacity:.7}}
+    .glance-logo-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(3rem,12vw,6.5rem);font-style:italic;color:#fff;line-height:1;text-shadow:0 4px 30px rgba(0,0,0,.4);letter-spacing:-1px}
+    .glance-logo-text em{font-style:normal;color:#C9A45C}
+    .glance-sub{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(.75rem,2vw,1rem);color:rgba(255,255,255,.55);letter-spacing:4px;text-transform:uppercase;margin:1rem 0 2.5rem}
+    .glance-ring-wrap{position:relative;width:70px;height:70px;margin:0 auto 1.5rem}
+    .glance-ring-wrap svg{transform:rotate(-90deg)}
+    .ring-bg{fill:none;stroke:rgba(255,255,255,.1);stroke-width:3}
+    .ring-prog{fill:none;stroke:#C9A45C;stroke-width:3;stroke-linecap:round;stroke-dasharray:188;stroke-dashoffset:188;animation:ring 4s linear forwards}
+    @keyframes ring{to{stroke-dashoffset:0}}
+    .ring-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:700;color:#C9A45C}
+    .glance-skip-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.8);padding:.55rem 1.4rem;border-radius:9999px;font-size:.82rem;letter-spacing:.5px;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
+    .glance-skip-btn:hover{background:rgba(255,255,255,.18);color:#fff}
+    .glance-owner{position:absolute;bottom:2rem;color:rgba(255,255,255,.35);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;font-family:'Plus Jakarta Sans',sans-serif}
+    .glance-wrap.fade-out{opacity:0;transform:scale(1.04);transition:opacity .6s ease,transform .6s ease}
   </style>
 </head>
 <body>
 
-  <main class="glance-screen-wrapper">
-    <div class="glance-bg-texture"></div>
-    <div class="glance-orb-1"></div>
-    <div class="glance-orb-2"></div>
+<div class="glance-wrap" id="glance-screen">
+  <!-- Floating particles -->
+  <div class="glance-particles" id="particles"></div>
 
-    <div class="glance-content-card">
-      <!-- Boutique Royal Crest Icon -->
-      <div class="glance-crest">
-        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" style="width: 100%; height: 100%;">
-          <circle cx="50" cy="50" r="46" stroke="rgba(200,164,93,0.4)" stroke-dasharray="4 4" />
-          <polygon points="50,14 62,38 88,38 67,54 75,80 50,65 25,80 33,54 12,38 38,38" fill="rgba(200,164,93,0.15)" stroke="var(--color-gold)" stroke-width="1.8" />
-          <circle cx="50" cy="48" r="14" fill="none" stroke="var(--color-gold-light)" stroke-width="1.5" />
-          <path d="M42,48 Q50,40 58,48 Q50,56 42,48 Z" fill="var(--color-gold)" />
-        </svg>
-      </div>
+  <p class="ornament">✦ &nbsp; ✦ &nbsp; ✦</p>
 
-      <span class="glance-badge">Handcrafted Elegance • Bespoke Couture</span>
-      <h1 class="glance-title">Yazhi Collection</h1>
-      <p class="glance-tagline">Where Heritage Meets Haute Couture</p>
+  <h1 class="glance-logo-text">Yazhi <em>Collection</em></h1>
+  <p class="glance-sub">Luxury Women's Boutique · Coimbatore</p>
 
-      <div class="gold-divider" style="margin-bottom: 24px;"></div>
+  <div class="glance-ring-wrap">
+    <svg width="70" height="70" viewBox="0 0 70 70">
+      <circle class="ring-bg" cx="35" cy="35" r="30"/>
+      <circle class="ring-prog" cx="35" cy="35" r="30"/>
+    </svg>
+    <div class="ring-num" id="glance-timer">4</div>
+  </div>
 
-      <p class="glance-desc">
-        Welcome to an ethereal sanctuary of Indian fashion. Step inside to explore royal bridal silk ensembles, festive splendor, bespoke designer blouses, and timeless contemporary silhouettes tailored exclusively for you.
-      </p>
+  <button class="glance-skip-btn" id="glance-skip">Enter the Boutique →</button>
 
-      <div class="glance-actions">
-        <a href="home.html" class="btn btn-gold btn-lg enter-btn-glow" id="enter-boutique-btn">
-          <span>Enter Collection</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
+  <p class="glance-owner">By Sharmila M &nbsp;|&nbsp; Est. 2020</p>
+</div>
 
-        <a href="collections.html" class="btn btn-outline-gold btn-lg">
-          <span>Browse All 8 Collections</span>
-        </a>
-      </div>
+<script>
+// ─── Generate Particles ───────────────────────────────────────
+(function(){
+  const container = document.getElementById('particles');
+  const colors = ['#C9A45C','#F3DDE3','#7A3455','#fff'];
+  for(let i=0;i<22;i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random()*20+6;
+    p.style.cssText = `width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}%;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*8}s;`;
+    container.appendChild(p);
+  }
+})();
 
-      <div class="feature-pill-strip">
-        <span class="feature-pill">✨ Pure Kanchipuram Weaves</span>
-        <span class="feature-pill">✂️ Custom Bespoke Stitching</span>
-        <span class="feature-pill">🌍 Worldwide Boutique Delivery</span>
-      </div>
+// ─── Countdown + Redirect ─────────────────────────────────────
+let countdown = 4;
+const timerEl = document.getElementById('glance-timer');
+const screen = document.getElementById('glance-screen');
 
-      <a href="home.html" class="glance-skip">Skip intro and go directly to Home &rarr;</a>
-    </div>
-  </main>
+const redirect = () => {
+  screen.classList.add('fade-out');
+  setTimeout(()=>{ window.location.href='home.html'; }, 600);
+};
 
-  <script src="js/cart.js"></script>
-  <script src="js/script.js"></script>
+const tick = setInterval(()=>{
+  countdown--;
+  timerEl.textContent = countdown;
+  if(countdown <= 0){ clearInterval(tick); redirect(); }
+}, 1000);
+
+document.getElementById('glance-skip').addEventListener('click',()=>{
+  clearInterval(tick);
+  redirect();
+});
+</script>
 </body>
 </html>

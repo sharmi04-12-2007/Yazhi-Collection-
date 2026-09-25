@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Arrivals – Yazhi Collection | Latest Women's Fashion</title>
+  <meta name="description" content="Shop the latest arrivals at Yazhi Collection – max 7 exclusive new pieces each season. Coimbatore's finest women's boutique.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="offer-banner"><span id="offer-ticker-text"></span></div>
+<header class="yazhi-header">
+  <div class="container header-inner">
+    <a href="home.html" class="logo"><div class="logo-mark">✦</div><div><div class="logo-text">Yazhi Collection</div><div class="logo-sub">Luxury Boutique</div></div></a>
+    <nav class="yazhi-nav">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a>
+      <a href="new-arrivals.html" class="active">New Arrivals</a>
+      <a href="enquiry.html">Enquiry</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="btn-icon">🛍️<span data-cart-badge style="display:none"></span></a>
+      <a href="login.html" class="btn-icon" data-auth="login-link">👤</a>
+      <a href="profile.html" class="btn-icon" data-auth="profile-link" style="display:none">👤</a>
+      <button class="btn-icon" data-auth="logout-link" style="display:none" onclick="yazhiLogout()">🚪</button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer">
+  <div class="drawer-header"><div class="logo"><div class="logo-mark" style="width:32px;height:32px;font-size:.85rem">✦</div><div class="logo-text">Yazhi Collection</div></div><button class="drawer-close" id="drawer-close">✕</button></div>
+  <div class="drawer-nav"><a href="home.html">🏠 Home</a><a href="collections.html">👗 Collections</a><a href="new-arrivals.html" class="active">✨ New Arrivals</a><a href="cart.html">🛍️ Cart</a><div class="drawer-divider"></div><a href="enquiry.html">💬 Enquiry</a><a href="contact.html">📍 Contact</a><a href="login.html" data-auth="login-link">👤 Login</a></div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="home.html">Home</a><span>/</span><span>New Arrivals</span></div>
+    <h1>New Arrivals ✨</h1>
+    <p>Freshly curated — the season's most coveted pieces, strictly limited to 7 exclusive selections</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div style="background:linear-gradient(135deg,var(--blush-lt),var(--cream));border:1px solid var(--border-g);border-radius:var(--r-md);padding:1rem 1.5rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem;font-size:.88rem;color:var(--wine)">
+      <span style="font-size:1.2rem">✨</span>
+      <span><strong>Limited Selections:</strong> We handpick maximum 7 new arrivals per season to ensure each piece is truly exceptional. These sell out fast!</span>
+    </div>
+
+    <div class="product-grid" id="new-arrivals-grid"></div>
+  </div>
+</section>
+
+<section class="section-alt" style="padding:2.5rem 0">
+  <div class="container" style="text-align:center">
+    <h3 style="font-family:var(--serif);color:var(--plum);margin-bottom:.5rem">Want to be the first to know?</h3>
+    <p style="color:var(--muted);margin-bottom:1.25rem">WhatsApp us and we'll notify you when new pieces arrive.</p>
+    <a href="https://wa.me/916369685930?text=Hi%20Yazhi%20Collection!%20Please%20notify%20me%20about%20new%20arrivals." target="_blank" class="btn btn-whatsapp">💬 Join WhatsApp Updates</a>
+  </div>
+</section>
+
+<footer class="yazhi-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2024 Yazhi Collection · Sharmila M · Coimbatore</p>
+      <p><a href="tel:6369685930" style="color:rgba(255,255,255,.4)">6369685930</a> · 9 AM – 9 PM</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('new-arrivals-grid');
+  // Strictly max 7 items per PRD v2
+  YAZHI_NEW_ARRIVALS.slice(0, 7).forEach(p => {
+    const discPct = Math.round((1 - p.price / p.originalPrice) * 100);
+    grid.innerHTML += `
+      <div class="product-card reveal-on-scroll">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" data-label="${p.name}" data-color="#3B1F3F" style="width:100%;height:100%"></div>
+          <span class="product-badge new">${p.badge}</span>
+          <span class="product-badge gold" style="top:.75rem;right:.75rem;left:auto">-${discPct}%</span>
+        </div>
+        <div class="product-info">
+          <div class="tag" style="margin-bottom:.4rem">${p.collection}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-tagline">${p.tagline}</div>
+          <div class="product-price">
+            <span class="original">₹${p.originalPrice.toLocaleString('en-IN')}</span>
+            ₹${p.price.toLocaleString('en-IN')}
+          </div>
+          <div class="product-colors" style="margin:.5rem 0">
+            ${p.colors.slice(0,4).map(c=>`<span class="color-dot" title="${c}" style="background:#C9A45C;opacity:.7"></span>`).join('')}
+            <span style="font-size:.72rem;color:var(--muted)">${p.colors.length} colors</span>
+          </div>
+          <div class="product-card-actions">
+            <button class="btn btn-primary" onclick="yazhiAddToCart({id:'${p.id}',name:'${p.name.replace(/'/g,"\\'")}',price:${p.price},colors:${JSON.stringify(p.colors)},sizes:${JSON.stringify(p.sizes)}})">Add to Cart</button>
+            <a href="enquiry.html?item=${encodeURIComponent(p.name)}" class="btn btn-ghost">Enquire</a>
+          </div>
+        </div>
+      </div>`;
+  });
+  yazhiFillPlaceholders();
+  yazhiInitScrollReveal();
+});
+</script>
+</body>
+</html>

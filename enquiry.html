@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enquiry – Yazhi Collection | Custom Design & Product Questions</title>
+  <meta name="description"
+    content="Send an enquiry to Yazhi Collection – Sharmila M. WhatsApp 6369685930 or fill the form for custom designs and questions.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="offer-banner"><span id="offer-ticker-text"></span></div>
+  <header class="yazhi-header">
+    <div class="container header-inner">
+      <a href="home.html" class="logo">
+        <div class="logo-mark">✦</div>
+        <div>
+          <div class="logo-text">Yazhi Collection</div>
+          <div class="logo-sub">Luxury Boutique</div>
+        </div>
+      </a>
+      <nav class="yazhi-nav">
+        <a href="home.html">Home</a><a href="collections.html">Collections</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="enquiry.html" class="active">Enquiry</a><a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="btn-icon">🛍️<span data-cart-badge style="display:none"></span></a>
+        <a href="login.html" class="btn-icon" data-auth="login-link">👤</a>
+        <a href="profile.html" class="btn-icon" data-auth="profile-link" style="display:none">👤</a>
+        <button class="btn-icon" data-auth="logout-link" style="display:none" onclick="yazhiLogout()">🚪</button>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <div class="drawer-header">
+      <div class="logo">
+        <div class="logo-mark" style="width:32px;height:32px;font-size:.85rem">✦</div>
+        <div class="logo-text">Yazhi Collection</div>
+      </div><button class="drawer-close" id="drawer-close">✕</button>
+    </div>
+    <div class="drawer-nav"><a href="home.html">🏠 Home</a><a href="collections.html">👗 Collections</a><a
+        href="new-arrivals.html">✨ New Arrivals</a><a href="enquiry.html" class="active">💬 Enquiry</a><a
+        href="contact.html">📍 Contact</a></div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="home.html">Home</a><span>/</span><span>Enquiry</span></div>
+      <h1>Send an Enquiry 💬</h1>
+      <p>Talk to Sharmila M directly — custom designs, product questions, or consultation</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Left: Contact Info -->
+        <div class="contact-info-card">
+          <h2>Get in Touch</h2>
+          <p>We're here to help you find the perfect outfit. Sharmila M personally handles all enquiries.</p>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <strong>Call Us</strong>
+              <span><a href="tel:6369685930" style="color:rgba(255,255,255,.8)">6369685930</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div class="contact-item-text">
+              <strong>WhatsApp</strong>
+              <span>Instant response on WhatsApp</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏰</div>
+            <div class="contact-item-text">
+              <strong>Response Hours</strong>
+              <span>9:00 AM – 9:00 PM · Daily</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <strong>Boutique Location</strong>
+              <span>Coimbatore, Tamil Nadu, India</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/916369685930?text=Hello%20Yazhi%20Collection!%20I%20have%20an%20enquiry."
+            target="_blank" class="btn btn-whatsapp btn-full" style="margin-top:1.5rem">
+            💬 Start WhatsApp Chat
+          </a>
+          <a href="tel:6369685930" class="btn btn-outline-gold btn-full" style="margin-top:.75rem">
+            📞 Call 6369685930
+          </a>
+        </div>
+
+        <!-- Right: Enquiry Form -->
+        <div class="enquiry-form-card">
+          <h3 style="font-family:var(--serif);color:var(--plum);margin-bottom:1.5rem;font-size:1.3rem">📝 Enquiry Form
+          </h3>
+
+          <div id="enq-success" class="alert alert-success" style="display:none">
+            ✔ Enquiry sent! Sharmila M will contact you within the shop hours (9 AM – 9 PM).
+          </div>
+
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="enq-name" placeholder="Full name">
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Phone / WhatsApp *</label>
+              <input type="tel" id="enq-phone" placeholder="Mobile number" maxlength="10">
+            </div>
+            <div class="form-group">
+              <label>Enquiry Type</label>
+              <select id="enq-type">
+                <option value="general">General Query</option>
+                <option value="custom">Custom Design</option>
+                <option value="bridal">Bridal Consultation</option>
+                <option value="order">Order Related</option>
+                <option value="price">Price Query</option>
+                <option value="availability">Product Availability</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Item / Product (optional)</label>
+            <input type="text" id="enq-item" placeholder="Product name if applicable">
+          </div>
+          <div class="form-group">
+            <label>Your Message *</label>
+            <textarea id="enq-message" rows="5"
+              placeholder="Describe your query in detail — fabric preferences, occasion, budget, special requirements..."></textarea>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:.75rem">
+            <button class="btn btn-whatsapp btn-full btn-lg" onclick="sendWhatsApp()">
+              💬 Send via WhatsApp (Recommended)
+            </button>
+            <button class="btn btn-primary btn-full" onclick="submitEnquiryForm()">
+              📝 Submit Enquiry Form
+            </button>
+          </div>
+          <p style="font-size:.75rem;color:var(--muted);margin-top:.75rem;text-align:center">
+            WhatsApp gets a faster response · We reply within shop hours
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="yazhi-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2024 Yazhi Collection · Sharmila M · Coimbatore · 6369685930</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Pre-fill from URL param
+    const urlItem = new URLSearchParams(location.search).get('item');
+    if (urlItem) document.getElementById('enq-item').value = decodeURIComponent(urlItem);
+
+    // Pre-fill from session
+    const session = yazhiGetSession();
+    if (session && session.name) document.getElementById('enq-name').value = session.name;
+    if (session && session.phone) document.getElementById('enq-phone').value = session.phone;
+
+    function getFields() {
+      return {
+        name: document.getElementById('enq-name').value.trim(),
+        phone: document.getElementById('enq-phone').value.trim(),
+        type: document.getElementById('enq-type').value,
+        item: document.getElementById('enq-item').value.trim(),
+        message: document.getElementById('enq-message').value.trim()
+      };
+    }
+
+    function validateFields(f) {
+      if (!f.name) { yazhiToast('Please enter your name.', 'error'); return false; }
+      if (!f.phone || !/^\d{10}$/.test(f.phone)) { yazhiToast('Please enter a valid 10-digit phone number.', 'error'); return false; }
+      if (!f.message) { yazhiToast('Please enter your message.', 'error'); return false; }
+      return true;
+    }
+
+    function sendWhatsApp() {
+      const f = getFields();
+      if (!validateFields(f)) return;
+      const text = `Hello Yazhi Collection (Sharmila M) 🙏\n\n*Name:* ${f.name}\n*Phone:* ${f.phone}\n*Type:* ${f.type}\n${f.item ? `*Item:* ${f.item}\n` : ''}*Message:* ${f.message}\n\nThank you! 🌸`;
+      yazhiWhatsAppEnquiry(f.name, f.phone, f.message);
+      yazhiSubmitEnquiry(f.name, f.phone, f.message, f.type);
+    }
+
+    function submitEnquiryForm() {
+      const f = getFields();
+      if (!validateFields(f)) return;
+      yazhiSubmitEnquiry(f.name, f.phone, f.message, f.type);
+      document.getElementById('enq-success').style.display = '';
+      document.getElementById('enq-message').value = '';
+      yazhiToast('Enquiry submitted successfully!', 'success');
+    }
+  </script>
+</body>
+
+</html>
