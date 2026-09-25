@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Collections | Yazhi Collection Luxury Boutique</title>
+  <meta name="description" content="Explore all 8 major collections of Yazhi Collection: Bridal, Festive, Party, Ethnic, Custom Design, Saree Collection, Combos, and Contemporary.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-content">
+      <span class="announcement-badge">Boutique Exclusive</span>
+      <span>✨ Festive Season Special: Complimentary Custom Blouse Stitching & Express Shipping on orders above ₹2,999 | Code: <strong>YAZHI10</strong></span>
+    </div>
+    <button class="announcement-close" aria-label="Close Announcement">&times;</button>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="home.html" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polygon points="50,15 62,38 88,38 67,54 75,80 50,65 25,80 33,54 12,38 38,38" fill="rgba(200,164,93,0.18)" stroke="var(--color-gold)" />
+          <circle cx="50" cy="48" r="12" fill="none" stroke="var(--color-gold-dark)" />
+        </svg>
+        <div class="brand-text">
+          <span class="brand-title">Yazhi Collection</span>
+          <span class="brand-tagline">Women's Luxury Boutique</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="home.html" class="nav-link">Home</a>
+        <div class="nav-item-dropdown">
+          <a href="collections.html" class="nav-link active">Collections &#9662;</a>
+          <div class="dropdown-menu">
+            <a href="bridal.html" class="dropdown-link"><span>Bridal Collection</span><span class="dropdown-badge">5 Types</span></a>
+            <a href="festive.html" class="dropdown-link"><span>Festive Splendor</span><span class="dropdown-badge">5 Types</span></a>
+            <a href="party.html" class="dropdown-link"><span>Party Glamour</span><span class="dropdown-badge">5 Types</span></a>
+            <a href="ethnic.html" class="dropdown-link"><span>Ethnic Classics</span><span class="dropdown-badge">5 Types</span></a>
+            <a href="custom-design.html" class="dropdown-link"><span>Custom Design</span><span class="dropdown-badge">Bespoke</span></a>
+            <a href="saree-collection.html" class="dropdown-link"><span>Saree Collection</span><span class="dropdown-badge">Handloom</span></a>
+            <a href="combos.html" class="dropdown-link"><span>Combos & Pairings</span><span class="dropdown-badge">Trending</span></a>
+            <a href="contemporary.html" class="dropdown-link"><span>Contemporary Wear</span><span class="dropdown-badge">Modern</span></a>
+          </div>
+        </div>
+        <a href="home.html#new-arrivals" class="nav-link">New Arrivals</a>
+        <a href="custom-design.html" class="nav-link">Bespoke Studio</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="action-btn search-trigger-btn" aria-label="Search Catalog" title="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <a href="profile.html#wishlist" class="action-btn" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span class="action-badge wishlist-badge" style="display: none;">0</span>
+        </a>
+        <a href="cart.html" class="action-btn" aria-label="Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="action-badge cart-badge" style="display: none;">0</span>
+        </a>
+        <a href="history.html" class="action-btn" aria-label="Order History">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </a>
+        <a href="profile.html" class="action-btn" aria-label="User Profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <button class="mobile-toggle" aria-label="Open Menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-text">
+        <span class="brand-title" style="font-size: 1.35rem;">Yazhi Collection</span>
+        <span class="brand-tagline">Boutique Menu</span>
+      </div>
+      <button class="mobile-close-btn">&times;</button>
+    </div>
+    <div class="mobile-links">
+      <a href="home.html" class="mobile-nav-link">Home</a>
+      <a href="collections.html" class="mobile-nav-link active">All 8 Collections &rarr;</a>
+      <div class="mobile-sublinks">
+        <a href="bridal.html" class="mobile-sublink">• Bridal Collection</a>
+        <a href="festive.html" class="mobile-sublink">• Festive Splendor</a>
+        <a href="party.html" class="mobile-sublink">• Party Glamour</a>
+        <a href="ethnic.html" class="mobile-sublink">• Ethnic Classics</a>
+        <a href="custom-design.html" class="mobile-sublink">• Custom Design</a>
+        <a href="saree-collection.html" class="mobile-sublink">• Saree Collection</a>
+        <a href="combos.html" class="mobile-sublink">• Combos & Pairings</a>
+        <a href="contemporary.html" class="mobile-sublink">• Contemporary</a>
+      </div>
+      <a href="cart.html" class="mobile-nav-link">Shopping Cart</a>
+      <a href="profile.html" class="mobile-nav-link">My Profile & Measurements</a>
+      <a href="history.html" class="mobile-nav-link">Order History</a>
+      <a href="contact.html" class="mobile-nav-link">Contact & Studio Visit</a>
+    </div>
+  </div>
+  <div class="drawer-backdrop"></div>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 1.3rem; color: var(--color-plum);">Search Yazhi Collections</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="catalog-search-input" class="form-control" placeholder="Search collections, fabrics or items..." style="margin-bottom: 20px;">
+        <div id="search-results-container" style="max-height: 380px; overflow-y: auto;">
+          <p style="text-align: center; color: var(--color-muted); padding: 20px;">Type a keyword to discover handloom treasures...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Header for Collections Hub -->
+  <section class="category-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="home.html">Home</a>
+        <span class="breadcrumb-separator">&gt;</span>
+        <span>Collections</span>
+      </div>
+
+      <div class="category-hero-layout">
+        <div>
+          <span class="section-tag" style="background: rgba(200, 164, 93, 0.2); color: var(--color-gold-light);">The Grand Boutique Directory</span>
+          <h1 style="color: var(--color-white); margin-bottom: 16px;">The 8 Major Collections</h1>
+          <p style="color: var(--color-blush); font-size: 1.15rem; line-height: 1.7; max-width: 620px;">
+            Every collection at Yazhi represents a dedicated realm of craftsmanship. Explore our five curated types within each category, complete with authentic handloom silks, custom tailoring, and contemporary silhouettes.
+          </p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="Yazhi Collections Overview" class="category-hero-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All 8 Collections Grid -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="collections-grid">
+
+        <!-- 1. Bridal -->
+        <div class="collection-card">
+          <div class="collection-thumb-wrap">
+            <span class="collection-badge">Collection 01</span>
+            <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" alt="Bridal Collection" class="collection-thumb">
+          </div>
+          <div class="collection-body">
+            <h3>Bridal Collection</h3>
+            <p>Traditional Kanchipuram silk sarees, opulent bridal lehengas, modern designer sarees, heavy maggam blouses, and reception wear.</p>
+            <div class="collection-footer">
+              <span class="collection-types-count">5 Signature Types</span>
+              <a href="bridal.html" class="btn btn-gold btn-sm">Explore Bridal &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Festive -->
+        <div class="collection-card">
+          <div class="collection-thumb-wrap">
+            <span class="collection-badge">Collection 02</span>
+            <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80" alt="Festive Collection" class="collection-thumb">
+          </div>
+          <div class="collection-body">
+            <h3>Festive Splendor</h3>
+            <p>Celebrate the radiant spirit of Diwali, Pongal, Navratri, Onam, and Christmas with weaves enriched with tradition and elegance.</p>
+            <div class="collection-footer">
+              <span class="collection-types-count">5 Festive Types</span>
+              <a href="festive.html" class="btn btn-gold btn-sm">Explore Festive &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Party -->
+        <div class="collection-card">
+          <div class="collection-thumb-wrap">
+            <span class="collection-badge">Collection 03</span>
+            <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&w=600&q=80" alt="Party Wear Collection" class="collection-thumb">
+          </div>
+          <div class="collection-body">
+            <h3>Party Wear</h3>
+            <p>From shimmering cocktail gowns and glamorous designer sarees to stylish party lehengas and trendy Indo-Western drapes.</p>
+            <div class="collection-footer">
+              <span class="collection-types-count">5 Party Types</span>
+              <a href="party.html" class="btn btn-gold btn-sm">Explore Party &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Ethnic -->
+        <div class="collection-card">
+          <div class="collection-thumb-wrap">
+            <span class="collection-badge">Collection 04</span>
+            <img src="https://images.unsplash.com/photo-1518049362265-d5b2a6467637?auto=format&fit=crop&w=600&q=80" alt="Ethnic Classics" class="collection-thumb">
+          </div>
+          <div class="collection-body">
+            <h3>Ethnic Classics</h3>
+            <p>Timeless salwar suits, royal Anarkali flows, classic churidar sets, flattering maxi fits, and festive lehenga cholis.</p>
+            <div class="collection-footer">
+              <span class="collection-types-count">5 Ethnic Types</span>
+              <a href="ethnic.html" class="btn btn-gold btn-sm">Explore Ethnic &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Custom Design -->
+        <div class="collection-card">
+          <div class="collection-thumb-wrap">
+            <span class="collection-badge">Collection 05</span>
+            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&q=80" alt="Custom Design Atelier" class="collection-thumb">
+          </div>
+          <div class="collection-body">
+            <h3>Custom Design</h3>
+            <p>Bespoke custom-made blouses, dresses, adorable kids wear, dream bridal creations, and handcrafted sharara ensembles.</p>
+            <div class="collection-footer">
+              <span class="collection-types-count">5 Bespoke Types</span>
+              <a href="custom-design.html" class="btn btn-gold btn-sm">Explore Custom &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Saree Collection -->
+        <div class="collection-card">
+          <div class="collection-thumb-wrap">
+            <span class="collection-badge">Collection 06</span>
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80" alt="Saree Collection" class="collection-thumb">
+          </div>
+          <div class="collection-body">
+            <h3>Saree Collection</h3>
+            <p>Our pride: pure mulberry silks, breezy Chettinad cottons, smooth silk-cotton blends, thread embroideries, and party drapes.</p>
+            <div class="collection-footer">
+              <span class="collection-types-count">5 Saree Types</span>
+              <a href="saree-collection.html" class="btn btn-gold btn-sm">Explore Sarees &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Combos -->
+        <div class="collection-card">
+          <div class="collection-thumb-wrap">
+            <span class="collection-badge">Collection 07</span>
+            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80" alt="Combos Collection" class="collection-thumb">
+          </div>
+          <div class="collection-body">
+            <h3>Combos & Pairings</h3>
+            <p>Charming blouse + skirt combinations, cherished mother-daughter pairings, royal couple ensembles, and family festive sets.</p>
+            <div class="collection-footer">
+              <span class="collection-types-count">5 Combo Types</span>
+              <a href="combos.html" class="btn btn-gold btn-sm">Explore Combos &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Contemporary -->
+        <div class="collection-card">
+          <div class="collection-thumb-wrap">
+            <span class="collection-badge">Collection 08</span>
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80" alt="Contemporary Wear" class="collection-thumb">
+          </div>
+          <div class="collection-body">
+            <h3>Contemporary Wear</h3>
+            <p>Modern style redefined: coordinated luxury sets, chic western dresses, elevated everyday tops, and evening party couture.</p>
+            <div class="collection-footer">
+              <span class="collection-types-count">5 Modern Types</span>
+              <a href="contemporary.html" class="btn btn-gold btn-sm">Explore Contemporary &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PRD Requirement: Customization callout note -->
+      <div class="customization-callout">
+        <div class="customization-text">
+          <div class="customization-icon">✨</div>
+          <div>
+            <h4>Looking for a Personalized Boutique Order?</h4>
+            <p>Every woman is unique. Our master artisans can customize color shades, embellishments, and blouse neck cuts for any of our 8 collections.</p>
+          </div>
+        </div>
+        <button class="btn btn-primary enquire-customization-btn" data-ref="General Collections Inquiry">
+          <span>Enquire About Customization</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="brand-logo" style="margin-bottom: 16px;">
+          <span class="brand-title" style="color: var(--color-gold-light); font-size: 1.5rem;">Yazhi Collection</span>
+        </div>
+        <p>An elite boutique sanctuary dedicated to celebrating Indian fashion heritage, handloom weaving traditions, bespoke bridal trousseaus, and contemporary femininity.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram">IG</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Facebook">FB</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="YouTube">YT</a>
+          <a href="https://wa.me/919840123456" target="_blank" rel="noopener" class="social-icon-btn" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>All 8 Collections</h4>
+        <div class="footer-links">
+          <a href="bridal.html" class="footer-link">Bridal Collection</a>
+          <a href="festive.html" class="footer-link">Festive Splendor</a>
+          <a href="party.html" class="footer-link">Party Wear</a>
+          <a href="ethnic.html" class="footer-link">Ethnic Classics</a>
+          <a href="custom-design.html" class="footer-link">Custom Design Studio</a>
+          <a href="saree-collection.html" class="footer-link">Saree Collection</a>
+          <a href="combos.html" class="footer-link">Combos & Pairings</a>
+          <a href="contemporary.html" class="footer-link">Contemporary Wear</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Client Services</h4>
+        <div class="footer-links">
+          <a href="profile.html" class="footer-link">My Account & Profile</a>
+          <a href="history.html" class="footer-link">Track Order / History</a>
+          <a href="cart.html" class="footer-link">Shopping Bag</a>
+          <a href="contact.html" class="footer-link">Studio Consultation</a>
+          <a href="contact.html#faq" class="footer-link">Customization FAQs</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Luxury Boutique Studio</h4>
+        <p style="margin-bottom: 12px;">📍 42 Heritage Weaver Lane, T. Nagar, Chennai, Tamil Nadu 600017</p>
+        <p style="margin-bottom: 12px;">📞 +91 98401 23456<br>✉️ care@yazhicollection.com</p>
+        <div style="background: rgba(255,255,255,0.06); padding: 14px; border-radius: 8px; border: 1px solid rgba(200, 164, 93, 0.3);">
+          <div style="font-size: 0.82rem; color: var(--color-gold-light); font-weight: 700; margin-bottom: 4px;">Studio Hours:</div>
+          <div style="font-size: 0.8rem; color: #CCC;">Monday – Saturday: 10:00 AM – 8:30 PM</div>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom-bar">
+      <div>&copy; 2026 Yazhi Collection. All Rights Reserved.</div>
+      <div>Designed for Localhost Web Experience • Antigravity</div>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/interactions.js"></script>
+</body>
+</html>
