@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Portal – Yazhi Collection | Management Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background: var(--cream);
+    }
+
+    .owner-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    .owner-sidebar {
+      background: var(--plum-dark);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .owner-sidebar-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .owner-sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: #fff;
+    }
+
+    .owner-sidebar-sub {
+      font-size: .65rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: .2rem;
+    }
+
+    .owner-nav {
+      padding: 1rem;
+      flex: 1;
+    }
+
+    .owner-nav a,
+    .owner-nav button {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .7rem 1rem;
+      border-radius: var(--r-sm);
+      color: rgba(255, 255, 255, .75);
+      font-size: .85rem;
+      font-weight: 500;
+      transition: all var(--tf);
+      margin-bottom: .25rem;
+      width: 100%;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+    }
+
+    .owner-nav a:hover,
+    .owner-nav a.active,
+    .owner-nav button:hover {
+      background: rgba(255, 255, 255, .12);
+      color: #fff;
+    }
+
+    .owner-nav .nav-section {
+      font-size: .65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .35);
+      padding: .85rem 1rem .35rem;
+    }
+
+    .owner-main {
+      background: var(--cream);
+      overflow-y: auto;
+    }
+
+    .owner-topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .owner-topbar h2 {
+      font-size: 1.2rem;
+      color: var(--plum);
+      font-family: var(--serif);
+    }
+
+    .owner-content {
+      padding: 1.75rem;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .kpi-card {
+      background: #fff;
+      border-radius: var(--r-md);
+      padding: 1.25rem 1.4rem;
+      box-shadow: var(--sh-sm);
+      border-left: 4px solid var(--gold);
+    }
+
+    .kpi-val {
+      font-family: var(--serif);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--plum);
+      line-height: 1;
+    }
+
+    .kpi-label {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .4rem;
+      letter-spacing: .3px;
+    }
+
+    .kpi-card.accent-wine {
+      border-left-color: var(--wine);
+    }
+
+    .kpi-card.accent-ok {
+      border-left-color: var(--ok);
+    }
+
+    .kpi-card.accent-info {
+      border-left-color: var(--info);
+    }
+
+    .panel {
+      background: #fff;
+      border-radius: var(--r-md);
+      box-shadow: var(--sh-sm);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .panel-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+
+    .panel-header h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--plum);
+    }
+
+    .panel-body {
+      padding: 1.25rem;
+    }
+
+    .owner-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .82rem;
+    }
+
+    .owner-table th {
+      background: var(--plum);
+      color: #fff;
+      padding: .75rem 1rem;
+      text-align: left;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .owner-table td {
+      padding: .75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .owner-table tr:hover td {
+      background: var(--blush-lt);
+    }
+
+    .status-select {
+      padding: .35rem .6rem;
+      border: 1px solid var(--border);
+      border-radius: var(--r-xs);
+      font-size: .75rem;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .mobile-owner-bar {
+      display: none;
+      background: var(--plum-dark);
+      padding: .75rem 1rem;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+    }
+
+    @media(max-width:1024px) {
+      .owner-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .owner-sidebar {
+        display: none;
+      }
+
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mobile-owner-bar {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Mobile Owner Bar -->
+  <div class="mobile-owner-bar">
+    <span style="font-family:var(--serif);font-size:1rem;color:var(--gold)">✦ Yazhi Collection – Owner</span>
+    <button onclick="yazhiLogout()" class="btn btn-danger btn-sm">Logout</button>
+  </div>
+
+  <div class="owner-layout">
+    <!-- Sidebar -->
+    <aside class="owner-sidebar">
+      <div class="owner-sidebar-header">
+        <div class="owner-sidebar-logo">
+          <img src="images/logo-light.svg" alt="Yazhi Collection" style="height:32px;width:auto">
+        </div>
+        <div class="owner-sidebar-sub">Owner Administration</div>
+        <div style="margin-top:.6rem;font-size:.78rem;color:rgba(255,255,255,.65)">
+          Founder: <strong>Sharmila M</strong>
+        </div>
+      </div>
+      <nav class="owner-nav">
+        <div class="nav-section">Orders & Customers</div>
+        <a href="#" class="active" onclick="showSection('orders',this)">Orders & Dispatch</a>
+        <a href="#" onclick="showSection('enquiries',this)">Customer Enquiries</a>
+        <a href="#" onclick="showSection('customers',this)">Customer Accounts</a>
+
+        <div class="nav-section">Catalog Management</div>
+        <a href="#" onclick="showSection('products',this)">Products & Pricing</a>
+        <a href="#" onclick="showSection('offers',this)">Offers & Ticker</a>
+        <a href="#" onclick="showSection('reviews',this)">Customer Reviews</a>
+
+        <div class="nav-section">Storefront</div>
+        <a href="collections.html" target="_blank">Browse Collections ↗</a>
+        <a href="home.html" target="_blank">View Live Website ↗</a>
+
+        <div class="nav-section">Account</div>
+        <button onclick="yazhiLogout()">Exit / Logout</button>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="owner-main">
+      <div class="owner-topbar">
+        <h2 id="section-title">Orders & Dispatch Management</h2>
+        <div style="display:flex;align-items:center;gap:.75rem">
+          <span style="font-size:.8rem;color:var(--muted)" id="last-updated">Loading...</span>
+          <button class="btn btn-ghost btn-sm" onclick="refreshDashboard()">Refresh</button>
+        </div>
+      </div>
+
+      <div class="owner-content">
+        <!-- KPI Cards -->
+        <div class="kpi-grid" id="kpi-grid"></div>
+
+        <!-- 1. Orders Section -->
+        <div id="section-orders">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>All Boutique Orders</h3>
+              <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+                <input type="text" id="order-search" placeholder="Search ID, Name, Phone..." oninput="filterOrders()"
+                  style="padding:.4rem .75rem;border:1px solid var(--border);border-radius:var(--r-sm);font-size:.8rem;width:200px">
+                <select id="order-filter" onchange="filterOrders()"
+                  style="padding:.4rem .6rem;border:1px solid var(--border);border-radius:var(--r-sm);font-size:.8rem">
+                  <option value="">All Statuses</option>
+                  <option value="placed">Placed</option>
+                  <option value="confirmed">Confirmed</option>
+                  <option value="processing">Processing</option>
+                  <option value="packed">Packed</option>
+                  <option value="shipped">Shipped</option>
+                  <option value="out">Out for Delivery</option>
+                  <option value="delivered">Delivered</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+            </div>
+            <div class="panel-body" style="padding:0;overflow-x:auto">
+              <table class="owner-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Payment</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Dispatch Action</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-tbody">
+                  <tr>
+                    <td colspan="9" style="text-align:center;padding:2rem;color:var(--muted)">Loading orders...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Enquiries Section -->
+        <div id="section-enquiries" style="display:none">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Customer Enquiries & Custom Requests</h3>
+              <span id="enq-new-count" style="background:var(--wine);color:#fff;font-size:.7rem;padding:.2rem .6rem;border-radius:var(--r-full);font-weight:700"></span>
+            </div>
+            <div class="panel-body" style="padding:0;overflow-x:auto">
+              <table class="owner-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Category</th>
+                    <th>Message / Product Reference</th>
+                    <th>Submitted</th>
+                    <th>Contact Action</th>
+                  </tr>
+                </thead>
+                <tbody id="enq-tbody">
+                  <tr>
+                    <td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">No enquiries found.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Customers Section -->
+        <div id="section-customers" style="display:none">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Registered Customer Accounts</h3>
+            </div>
+            <div class="panel-body" style="padding:0;overflow-x:auto">
+              <table class="owner-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Joined</th>
+                    <th>Orders</th>
+                    <th>Contact</th>
+                  </tr>
+                </thead>
+                <tbody id="customers-tbody">
+                  <tr>
+                    <td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">No registered customers yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Products & Pricing Section (Requirement 30) -->
+        <div id="section-products" style="display:none">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3>Catalog Products & Pricing Manager</h3>
+                <p style="font-size:.78rem;color:var(--muted);margin-top:.2rem">Edit prices, images, or availability. Updates immediately reflect on customer pages.</p>
+              </div>
+              <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+                <input type="text" id="prod-admin-search" placeholder="Filter products..." oninput="renderAdminProducts()"
+                  style="padding:.4rem .75rem;border:1px solid var(--border);border-radius:var(--r-sm);font-size:.8rem;width:180px">
+                <select id="prod-admin-col-filter" onchange="renderAdminProducts()"
+                  style="padding:.4rem .6rem;border:1px solid var(--border);border-radius:var(--r-sm);font-size:.8rem">
+                  <option value="">All Collections</option>
+                  <option value="Bridal">Bridal</option>
+                  <option value="Festive">Festive</option>
+                  <option value="Party">Party</option>
+                  <option value="Ethnic">Ethnic</option>
+                  <option value="Custom Design">Custom Design</option>
+                  <option value="Saree Collection">Saree Collection</option>
+                  <option value="Combos">Combos</option>
+                  <option value="Contemporary">Contemporary</option>
+                  <option value="New Arrival">New Arrivals</option>
+                </select>
+              </div>
+            </div>
+            <div class="panel-body" style="padding:0;overflow-x:auto">
+              <table class="owner-table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Collection</th>
+                    <th>Price (₹)</th>
+                    <th>Original (₹)</th>
+                    <th>Stock Status</th>
+                    <th>Edit & Save</th>
+                  </tr>
+                </thead>
+                <tbody id="products-admin-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Offers & Banner Ticker Manager (Requirement 30) -->
+        <div id="section-offers" style="display:none">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Announcement Ticker & Active Promo Offers</h3>
+            </div>
+            <div class="panel-body">
+              <div style="max-width:680px">
+                <h4 style="font-family:var(--serif);color:var(--plum);margin-bottom:.5rem;font-size:1.05rem">Running Header Ticker Messages</h4>
+                <p style="color:var(--muted);font-size:.82rem;margin-bottom:1rem">Enter promotional messages (one per line). These rotate at the top of every page.</p>
+                <textarea id="ticker-messages-input" rows="6" style="width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:.85rem;line-height:1.6"></textarea>
+                <button class="btn btn-primary" onclick="saveTickerMessages()" style="margin-top:1rem">Save Announcement Ticker</button>
+
+                <hr style="margin:2rem 0;border:none;border-top:1px solid var(--border)">
+
+                <h4 style="font-family:var(--serif);color:var(--plum);margin-bottom:.5rem;font-size:1.05rem">Supported Promo Codes</h4>
+                <div style="background:var(--blush-lt);border-radius:var(--r-sm);padding:1rem 1.25rem;font-size:.85rem;line-height:1.7;color:var(--plum)">
+                  <div><strong>YAZHI50</strong> – 50% Off First Customer Order</div>
+                  <div><strong>BDAY30</strong> – 30% Off Birthday Celebration</div>
+                  <div><strong>FESTIVE20</strong> – 20% Off Festive Drapes</div>
+                  <div><strong>PREMIUM70</strong> – 70% Off Orders Above ₹9,000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Customer Reviews Moderation (Requirement 16) -->
+        <div id="section-reviews" style="display:none">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3>Customer Reviews Moderation</h3>
+                <p style="font-size:.78rem;color:var(--muted);margin-top:.2rem">Approve, hide, or remove reviews submitted by boutique clients.</p>
+              </div>
+            </div>
+            <div class="panel-body" style="padding:0;overflow-x:auto">
+              <table class="owner-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Customer</th>
+                    <th>Rating</th>
+                    <th>Review Content</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Moderation</th>
+                  </tr>
+                </thead>
+                <tbody id="reviews-admin-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Product Edit Modal -->
+  <div id="product-edit-modal" class="search-modal">
+    <div class="search-modal-box" style="max-width:540px;background:#fff;border-radius:var(--r-md);padding:2rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+        <h3 style="font-family:var(--serif);color:var(--plum);font-size:1.2rem" id="modal-prod-title">Edit Product</h3>
+        <button onclick="closeProductModal()" style="background:none;border:none;font-size:1.2rem;cursor:pointer">✕</button>
+      </div>
+      <input type="hidden" id="edit-prod-id">
+      <div class="form-group" style="margin-bottom:1rem">
+        <label>Product Name</label>
+        <input type="text" id="edit-prod-name" style="width:100%;padding:.6rem .8rem;border:1px solid var(--border);border-radius:var(--r-xs)">
+      </div>
+      <div class="form-grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div class="form-group">
+          <label>Price (₹)</label>
+          <input type="number" id="edit-prod-price" style="width:100%;padding:.6rem .8rem;border:1px solid var(--border);border-radius:var(--r-xs)">
+        </div>
+        <div class="form-group">
+          <label>Original Price (₹)</label>
+          <input type="number" id="edit-prod-original" style="width:100%;padding:.6rem .8rem;border:1px solid var(--border);border-radius:var(--r-xs)">
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem">
+        <label>Image URL</label>
+        <input type="text" id="edit-prod-image" style="width:100%;padding:.6rem .8rem;border:1px solid var(--border);border-radius:var(--r-xs)">
+      </div>
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label>Availability / Stock Status</label>
+        <select id="edit-prod-available" style="width:100%;padding:.6rem .8rem;border:1px solid var(--border);border-radius:var(--r-xs)">
+          <option value="true">In Stock & Available</option>
+          <option value="false">Out of Stock</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:.75rem;justify-content:flex-end">
+        <button class="btn btn-ghost" onclick="closeProductModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveProductModal()">Save & Update Storefront</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script>
+    // Guard: must be owner
+    const ownerSession = yazhiGetSession();
+    if (!ownerSession || ownerSession.role !== 'owner') {
+      window.location.href = 'owner-login.html';
+    }
+
+    const STATUS_STAGES = ['placed', 'confirmed', 'processing', 'packed', 'shipped', 'out', 'delivered', 'cancelled'];
+    const STATUS_LABELS = {
+      placed: 'Order Placed',
+      confirmed: 'Confirmed by Boutique',
+      processing: 'Artisan Tailoring',
+      packed: 'Insured Packing',
+      shipped: 'Shipped',
+      out: 'Out for Delivery',
+      delivered: 'Delivered',
+      cancelled: 'Cancelled'
+    };
+
+    let allOrders = [];
+    let activeSection = 'orders';
+
+    function showSection(section, el) {
+      ['orders', 'enquiries', 'customers', 'products', 'offers', 'reviews'].forEach(s => {
+        const dom = document.getElementById('section-' + s);
+        if (dom) dom.style.display = s === section ? '' : 'none';
+      });
+      document.querySelectorAll('.owner-nav a').forEach(a => a.classList.remove('active'));
+      if (el) el.classList.add('active');
+      activeSection = section;
+
+      const titles = {
+        orders: 'Orders & Dispatch Management',
+        enquiries: 'Customer Enquiries & Custom Requests',
+        customers: 'Registered Customer Accounts',
+        products: 'Catalog Products & Pricing Manager',
+        offers: 'Offers & Announcement Ticker',
+        reviews: 'Customer Reviews Moderation'
+      };
+      document.getElementById('section-title').textContent = titles[section] || 'Owner Dashboard';
+
+      if (section === 'enquiries') renderEnquiries();
+      if (section === 'customers') renderCustomers();
+      if (section === 'products') renderAdminProducts();
+      if (section === 'offers') renderOffersEditor();
+      if (section === 'reviews') renderAdminReviews();
+      return false;
+    }
+
+    function renderKPIs() {
+      const orders = (typeof yazhiGetAllOrders === 'function') ? yazhiGetAllOrders() : [];
+      allOrders = orders;
+      const users = (typeof yazhiGetUsers === 'function') ? yazhiGetUsers() : JSON.parse(localStorage.getItem('yazhi_users') || '[]');
+      const revenue = orders.filter(o => o.status !== 'cancelled').reduce((s, o) => s + (o.total || 0), 0);
+      const pending = orders.filter(o => !['delivered', 'cancelled'].includes(o.status)).length;
+      const enqs = (typeof yazhiGetEnquiries === 'function') ? yazhiGetEnquiries() : JSON.parse(localStorage.getItem('yazhi_enquiries') || '[]');
+
+      document.getElementById('kpi-grid').innerHTML = `
+        <div class="kpi-card"><div class="kpi-val">${orders.length}</div><div class="kpi-label">Total Orders</div></div>
+        <div class="kpi-card accent-wine"><div class="kpi-val">${pending}</div><div class="kpi-label">Pending Orders</div></div>
+        <div class="kpi-card accent-ok"><div class="kpi-val">₹${revenue.toLocaleString('en-IN')}</div><div class="kpi-label">Total Revenue</div></div>
+        <div class="kpi-card accent-info"><div class="kpi-val">${users.length}</div><div class="kpi-label">Customers &middot; ${enqs.length} Enquiries</div></div>
+      `;
+    }
+
+    function renderOrders(orders) {
+      const tbody = document.getElementById('orders-tbody');
+      if (!orders || !orders.length) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--muted)">No orders placed yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = orders.map(o => `
+        <tr>
+          <td><code style="font-size:.75rem;color:var(--plum);font-weight:700">${o.id}</code></td>
+          <td><strong>${o.userName || o.customerName || 'Boutique Client'}</strong></td>
+          <td><a href="tel:${o.userPhone || o.customerPhone || ''}" style="color:var(--wine)">${o.userPhone || o.customerPhone || '-'}</a></td>
+          <td style="max-width:180px;font-size:.78rem;color:var(--muted)">${(o.items || []).map(i => `${i.name} ×${i.qty}`).join(', ')}</td>
+          <td><strong style="color:var(--plum)">₹${(o.total || 0).toLocaleString('en-IN')}</strong></td>
+          <td style="font-size:.78rem">${o.paymentMethod || 'UPI'}</td>
+          <td style="font-size:.78rem;color:var(--muted)">${new Date(o.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</td>
+          <td><span class="order-status-chip status-${o.status}">${STATUS_LABELS[o.status] || o.status}</span></td>
+          <td>
+            <select class="status-select" onchange="updateStatus('${o.id}', this.value)" title="Update Status">
+              ${STATUS_STAGES.map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${STATUS_LABELS[s]}</option>`).join('')}
+            </select>
+            <div style="margin-top:.4rem;display:flex;gap:.5rem">
+              <button onclick="callCustomer('${o.userPhone || o.customerPhone || ''}')" style="background:none;color:var(--ok);font-size:.75rem;cursor:pointer;border:none;padding:0">Call</button>
+              <button onclick="whatsappCustomer('${o.userPhone || o.customerPhone || ''}','${o.id}')" style="background:none;color:#25D366;font-size:.75rem;cursor:pointer;border:none;padding:0">WhatsApp</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function updateStatus(orderId, newStatus) {
+      if (typeof yazhiUpdateOrderStatus === 'function') {
+        yazhiUpdateOrderStatus(orderId, newStatus, `Status updated by Sharmila M to: ${STATUS_LABELS[newStatus]}`);
+      }
+      yazhiToast(`Order ${orderId} updated to "${STATUS_LABELS[newStatus]}"`, 'success');
+      refreshDashboard();
+    }
+
+    function filterOrders() {
+      const search = document.getElementById('order-search').value.toLowerCase();
+      const status = document.getElementById('order-filter').value;
+      let filtered = allOrders;
+      if (search) filtered = filtered.filter(o => (o.id || '').toLowerCase().includes(search) || (o.userName || '').toLowerCase().includes(search) || (o.userPhone || '').includes(search));
+      if (status) filtered = filtered.filter(o => o.status === status);
+      renderOrders(filtered);
+    }
+
+    function renderEnquiries() {
+      const enqs = (typeof yazhiGetEnquiries === 'function') ? yazhiGetEnquiries() : JSON.parse(localStorage.getItem('yazhi_enquiries') || '[]');
+      const newCount = enqs.filter(e => e.status === 'new').length;
+      const badge = document.getElementById('enq-new-count');
+      if (badge) badge.textContent = newCount > 0 ? `${newCount} New` : '';
+
+      const tbody = document.getElementById('enq-tbody');
+      if (!enqs.length) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">No enquiries yet.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = enqs.map(e => `
+        <tr>
+          <td><strong>${e.name}</strong></td>
+          <td><a href="tel:${e.phone}" style="color:var(--wine)">${e.phone}</a></td>
+          <td><span class="tag">${e.type}</span></td>
+          <td style="max-width:240px;font-size:.8rem;color:var(--plum)">${e.message}</td>
+          <td style="font-size:.75rem;color:var(--muted)">${new Date(e.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</td>
+          <td>
+            <a href="https://wa.me/91${e.phone}?text=Hi%20${encodeURIComponent(e.name)}%2C%20this%20is%20Sharmila%20M%20from%20Yazhi%20Collection!" target="_blank" class="btn btn-whatsapp btn-sm">Reply WA</a>
+            <button onclick="markEnqRead('${e.id}')" class="btn btn-ghost btn-sm" style="margin-top:.3rem">✔ Mark Read</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function markEnqRead(id) {
+      const enqs = (typeof yazhiGetEnquiries === 'function') ? yazhiGetEnquiries() : JSON.parse(localStorage.getItem('yazhi_enquiries') || '[]');
+      const idx = enqs.findIndex(e => e.id === id);
+      if (idx !== -1) { enqs[idx].status = 'read'; localStorage.setItem('yazhi_enquiries', JSON.stringify(enqs)); }
+      renderEnquiries();
+      yazhiToast('Enquiry marked as read.', 'success');
+    }
+
+    function renderCustomers() {
+      const users = (typeof yazhiGetUsers === 'function') ? yazhiGetUsers() : JSON.parse(localStorage.getItem('yazhi_users') || '[]');
+      const orders = (typeof yazhiGetAllOrders === 'function') ? yazhiGetAllOrders() : [];
+      const tbody = document.getElementById('customers-tbody');
+      if (!users.length) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">No registered customers yet.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = users.map(u => {
+        const userOrders = orders.filter(o => o.userId === u.id);
+        return `
+          <tr>
+            <td><strong>${u.name}</strong></td>
+            <td style="font-size:.8rem;color:var(--muted)">${u.email}</td>
+            <td><a href="tel:${u.phone}" style="color:var(--wine)">${u.phone || '-'}</a></td>
+            <td style="font-size:.75rem;color:var(--muted)">${new Date(u.createdAt).toLocaleDateString('en-IN', { dateStyle: 'medium' })}</td>
+            <td><span style="font-weight:700;color:var(--plum)">${userOrders.length}</span></td>
+            <td>
+              <a href="https://wa.me/91${u.phone}" target="_blank" class="btn btn-whatsapp btn-sm">WA</a>
+              <a href="tel:${u.phone}" class="btn btn-ghost btn-sm" style="margin-left:.3rem">Call</a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // ─── Products & Pricing Management (Requirement 30) ───
+    function renderAdminProducts() {
+      const prods = (typeof yazhiGetAllProducts === 'function') ? yazhiGetAllProducts() : YAZHI_PRODUCTS;
+      const q = (document.getElementById('prod-admin-search').value || '').toLowerCase();
+      const colFilter = document.getElementById('prod-admin-col-filter').value;
+
+      let filtered = prods;
+      if (q) filtered = filtered.filter(p => p.name.toLowerCase().includes(q) || (p.collection || '').toLowerCase().includes(q));
+      if (colFilter) filtered = filtered.filter(p => (p.collection || '').toLowerCase() === colFilter.toLowerCase());
+
+      const tbody = document.getElementById('products-admin-tbody');
+      tbody.innerHTML = filtered.map(p => `
+        <tr>
+          <td>
+            <img src="${p.image}" alt="${p.name}" style="width:48px;height:56px;object-fit:cover;border-radius:var(--r-xs);border:1px solid var(--border)">
+          </td>
+          <td>
+            <strong>${p.name}</strong>
+            <div style="font-size:.74rem;color:var(--muted)">ID: ${p.id}</div>
+          </td>
+          <td><span class="tag">${p.collection || 'Collection'}</span></td>
+          <td><strong style="color:var(--wine)">₹${p.price.toLocaleString('en-IN')}</strong></td>
+          <td style="color:var(--muted)">₹${(p.originalPrice || p.price).toLocaleString('en-IN')}</td>
+          <td>
+            <span style="padding:.2rem .6rem;border-radius:var(--r-full);font-size:.72rem;font-weight:600;background:${p.available !== false ? 'rgba(46,125,50,.12);color:var(--ok)' : 'rgba(198,40,40,.12);color:var(--danger)'}">
+              ${p.available !== false ? 'In Stock' : 'Out of Stock'}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-outline btn-sm" onclick="openProductModal('${p.id}')">Edit Price & Details</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openProductModal(id) {
+      const prods = (typeof yazhiGetAllProducts === 'function') ? yazhiGetAllProducts() : YAZHI_PRODUCTS;
+      const p = prods.find(item => item.id === id);
+      if (!p) return;
+
+      document.getElementById('edit-prod-id').value = p.id;
+      document.getElementById('edit-prod-name').value = p.name;
+      document.getElementById('edit-prod-price').value = p.price;
+      document.getElementById('edit-prod-original').value = p.originalPrice || p.price;
+      document.getElementById('edit-prod-image').value = p.image || '';
+      document.getElementById('edit-prod-available').value = (p.available !== false).toString();
+      document.getElementById('modal-prod-title').textContent = 'Edit: ' + p.name;
+
+      document.getElementById('product-edit-modal').classList.add('active');
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-edit-modal').classList.remove('active');
+    }
+
+    function saveProductModal() {
+      const id = document.getElementById('edit-prod-id').value;
+      const name = document.getElementById('edit-prod-name').value.trim();
+      const price = parseInt(document.getElementById('edit-prod-price').value, 10);
+      const originalPrice = parseInt(document.getElementById('edit-prod-original').value, 10);
+      const image = document.getElementById('edit-prod-image').value.trim();
+      const available = document.getElementById('edit-prod-available').value === 'true';
+
+      if (!name || isNaN(price)) {
+        yazhiToast('Please provide valid name and price.', 'error');
+        return;
+      }
+
+      if (typeof yazhiSaveProductOverride === 'function') {
+        yazhiSaveProductOverride(id, { name, price, originalPrice, image, available });
+      }
+
+      closeProductModal();
+      renderAdminProducts();
+      yazhiToast(`Product "${name}" updated across storefront!`, 'success');
+    }
+
+    // ─── Offers & Ticker Editor (Requirement 30) ───
+    function renderOffersEditor() {
+      const stored = localStorage.getItem('yazhi_offers');
+      let messages = [];
+      if (stored) {
+        try { messages = JSON.parse(stored); } catch (e) { }
+      }
+      if (!messages.length && typeof DEFAULT_TICKER_MESSAGES !== 'undefined') {
+        messages = DEFAULT_TICKER_MESSAGES;
+      }
+      document.getElementById('ticker-messages-input').value = messages.join('\n');
+    }
+
+    function saveTickerMessages() {
+      const raw = document.getElementById('ticker-messages-input').value.trim();
+      const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+      localStorage.setItem('yazhi_offers', JSON.stringify(lines));
+      yazhiToast('Running announcement ticker updated across website!', 'success');
+    }
+
+    // ─── Customer Reviews Moderation (Requirement 16) ───
+    function renderAdminReviews() {
+      const reviews = (typeof yazhiGetAllReviews === 'function') ? yazhiGetAllReviews() : [];
+      const tbody = document.getElementById('reviews-admin-tbody');
+      if (!reviews.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--muted)">No customer reviews found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = reviews.map(r => `
+        <tr>
+          <td><strong style="color:var(--plum)">${r.productName || r.productId}</strong></td>
+          <td>${r.author}</td>
+          <td><span style="color:var(--gold);font-weight:700">★ ${r.rating}/5</span></td>
+          <td style="max-width:240px;font-size:.8rem;color:var(--plum);line-height:1.4">"${r.comment}"</td>
+          <td style="font-size:.74rem;color:var(--muted)">${new Date(r.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</td>
+          <td>
+            <span style="padding:.2rem .6rem;border-radius:var(--r-full);font-size:.72rem;font-weight:600;background:${r.status === 'approved' ? 'rgba(46,125,50,.12);color:var(--ok)' : 'rgba(198,40,40,.12);color:var(--danger)'}">
+              ${r.status || 'approved'}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-ghost btn-sm" onclick="toggleReviewStatus('${r.id}', '${r.status === 'approved' ? 'hidden' : 'approved'}')">
+              ${r.status === 'approved' ? 'Hide' : 'Approve'}
+            </button>
+            <button class="btn btn-ghost btn-sm" style="color:var(--danger);margin-left:.35rem" onclick="deleteReview('${r.id}')">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function toggleReviewStatus(id, newStatus) {
+      if (typeof yazhiUpdateReviewStatus === 'function') {
+        yazhiUpdateReviewStatus(id, newStatus);
+      }
+      renderAdminReviews();
+      yazhiToast(`Review status updated to ${newStatus}.`, 'success');
+    }
+
+    function deleteReview(id) {
+      if (!confirm('Are you sure you want to permanently delete this review?')) return;
+      const reviews = (typeof yazhiGetAllReviews === 'function') ? yazhiGetAllReviews() : [];
+      const updated = reviews.filter(r => r.id !== id);
+      localStorage.setItem('yazhi_reviews', JSON.stringify(updated));
+      renderAdminReviews();
+      yazhiToast('Review removed.', 'success');
+    }
+
+    function callCustomer(phone) {
+      if (phone) window.location.href = 'tel:' + phone;
+    }
+
+    function whatsappCustomer(phone, orderId) {
+      if (phone) window.open(`https://wa.me/91${phone}?text=Hello%2C%20this%20is%20Sharmila%20M%20from%20Yazhi%20Collection!%20Regarding%20your%20order%20${orderId}.`, '_blank');
+    }
+
+    function refreshDashboard() {
+      allOrders = (typeof yazhiGetAllOrders === 'function') ? yazhiGetAllOrders() : [];
+      renderKPIs();
+      renderOrders(allOrders);
+      if (activeSection === 'enquiries') renderEnquiries();
+      if (activeSection === 'customers') renderCustomers();
+      if (activeSection === 'products') renderAdminProducts();
+      if (activeSection === 'offers') renderOffersEditor();
+      if (activeSection === 'reviews') renderAdminReviews();
+      document.getElementById('last-updated').textContent = 'Updated: ' + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      refreshDashboard();
+      setInterval(refreshDashboard, 30000);
+    });
+  </script>
+</body>
+
+</html>

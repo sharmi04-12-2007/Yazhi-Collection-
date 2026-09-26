@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Order – Yazhi Collection | Real-Time Boutique Tracking</title>
+  <meta name="description" content="Track your Yazhi Collection order in real-time through all boutique crafting and delivery stages.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Offer Banner -->
+  <div class="offer-banner"><span id="offer-ticker-text">Exclusive 50% Off on your First Order with Code: YAZHI50</span></div>
+
+  <!-- Global Header (Requirement 20: Full navigation restored including Contact, Enquiry, New Arrivals, Search, Profile, Cart) -->
+  <header class="yazhi-header">
+    <div class="container header-inner">
+      <a href="home.html" class="logo" title="Yazhi Collection">
+        <img src="images/logo.svg" alt="Yazhi Collection" class="site-logo">
+      </a>
+      <nav class="yazhi-nav">
+        <a href="home.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="about.html">About</a>
+        <a href="enquiry.html">Enquiry</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Global Search Bar -->
+      <div class="header-search">
+        <form class="header-search-form" onsubmit="event.preventDefault(); yazhiOpenSearch(this.querySelector('input').value);">
+          <input type="text" class="header-search-input" placeholder="Search boutique styles..." aria-label="Search">
+          <button type="submit" class="header-search-btn" title="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-icon" data-action="open-search" title="Search" aria-label="Open Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <a href="cart.html" class="btn-icon" title="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span data-cart-badge style="display:none">0</span>
+        </a>
+        <a href="login.html" class="btn-icon" data-auth="login-link" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <a href="profile.html" class="btn-icon" data-auth="profile-link" style="display:none" title="My Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <button class="btn-icon" data-auth="logout-link" style="display:none" onclick="yazhiLogout()" title="Logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <div class="drawer-header">
+      <img src="images/logo.svg" alt="Yazhi Collection" style="height:34px;width:auto">
+      <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="home.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="new-arrivals.html">New Arrivals</a>
+      <a href="about.html">About Boutique</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Shopping Bag</a>
+      <div class="drawer-divider"></div>
+      <a href="profile.html" data-auth="profile-link" style="display:none">My Account</a>
+      <a href="history.html" data-auth="profile-link" style="display:none">My Orders</a>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero" style="padding:2.5rem 0 3rem">
+    <div class="container">
+      <div class="breadcrumb" style="justify-content:center;margin-bottom:.75rem">
+        <a href="home.html">Home</a>
+        <span>/</span>
+        <span style="color:var(--gold)">Track Order</span>
+      </div>
+      <span class="gold-sub">Boutique Transparency</span>
+      <h1>Track Your Order</h1>
+      <p>Enter your unique Yazhi order identifier to follow dispatch progress and artisan handoff</p>
+    </div>
+  </div>
+
+  <section style="padding:2.5rem 0 4rem">
+    <div class="container">
+      <div style="max-width:680px;margin:0 auto">
+        <!-- Search Box -->
+        <div class="section-card" style="margin-bottom:2rem;background:#fff">
+          <h3 style="display:flex;align-items:center;gap:.6rem;font-family:var(--serif);color:var(--plum);margin-bottom:.75rem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--wine)"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            Enter Your Order ID
+          </h3>
+          <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.25rem">Check the order confirmation screen, your SMS, or WhatsApp receipt for your ID (e.g. YC-1001-A).</p>
+          <div style="display:flex;gap:.75rem">
+            <input type="text" id="order-id-input" placeholder="e.g. YC-1001-A"
+              style="flex:1;padding:.8rem 1.15rem;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:.95rem;text-transform:uppercase;letter-spacing:1px">
+            <button class="btn btn-primary" onclick="trackOrder()" style="padding:.8rem 1.6rem">Track →</button>
+          </div>
+        </div>
+
+        <!-- Results Card -->
+        <div id="track-result" style="display:none">
+          <div class="section-card" id="order-info-card" style="margin-bottom:1.5rem;background:#fff"></div>
+          <div class="section-card" style="background:#fff">
+            <h3 style="font-family:var(--serif);color:var(--plum);margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold)"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Fulfillment & Dispatch Timeline
+            </h3>
+            <div id="timeline-display" style="margin-top:1rem"></div>
+          </div>
+          <div style="text-align:center;margin-top:2rem;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
+            <a href="https://wa.me/916369685930?text=Hi%20Sharmila%20M,%20inquiring%20about%20my%20order%20status." target="_blank" class="btn btn-whatsapp" style="display:inline-flex;align-items:center;gap:.5rem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              WhatsApp Sharmila M Directly
+            </a>
+            <a href="history.html" class="btn btn-outline" style="border-color:var(--plum);color:var(--plum)">View All My Orders</a>
+          </div>
+        </div>
+
+        <div id="track-not-found" style="display:none;background:#fff;border-radius:var(--r-md);padding:2.5rem;text-align:center;border:1px solid var(--border)">
+          <div style="width:50px;height:50px;border-radius:50%;background:rgba(122,52,85,.1);color:var(--wine);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <h3 style="color:var(--plum);font-family:var(--serif);margin-bottom:.5rem">Order ID Not Found</h3>
+          <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem">Please verify the Order ID spelling, or feel free to message boutique founder Sharmila M directly.</p>
+          <a href="https://wa.me/916369685930?text=Hi%20Sharmila%20M,%20I%20need%20help%20tracking%20my%20Yazhi%20Collection%20order." target="_blank"
+            class="btn btn-whatsapp" style="display:inline-flex;align-items:center;gap:.5rem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            Ask Sharmila M via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="yazhi-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-light.svg" alt="Yazhi Collection" class="footer-logo">
+          <p>Bespoke Indian bridal silks, festive wear, and custom embroidery boutique based in Coimbatore, Tamil Nadu.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="enquiry.html">Custom Design Enquiry</a></li>
+            <li><a href="contact.html">Store Location & Timing</a></li>
+            <li><a href="about.html">About Yazhi Boutique</a></li>
+            <li><a href="collections.html">Browse All Collections</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Direct Contact</h4>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Sharmila M (Founder)</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="tel:6369685930" style="color:inherit">6369685930</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>9:00 AM – 9:00 PM Daily</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Yazhi Collection · Sharmila M · Coimbatore, Tamil Nadu</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script>
+    const STATUS_LABELS = {
+      placed: 'Order Placed',
+      confirmed: 'Confirmed by Boutique',
+      processing: 'Artisan Tailoring / Handloom Work',
+      packed: 'Boutique Insured Packing',
+      shipped: 'Dispatched with Courier',
+      out: 'Out for Delivery',
+      delivered: 'Delivered',
+      cancelled: 'Cancelled'
+    };
+
+    function trackOrder() {
+      const id = document.getElementById('order-id-input').value.trim().toUpperCase();
+      if (!id) { yazhiToast('Please enter an Order ID.', 'warning'); return; }
+
+      const order = (typeof yazhiGetOrderById === 'function') ? yazhiGetOrderById(id) : null;
+      const resultEl = document.getElementById('track-result');
+      const notFoundEl = document.getElementById('track-not-found');
+
+      if (!order) {
+        resultEl.style.display = 'none';
+        notFoundEl.style.display = 'block';
+        return;
+      }
+
+      notFoundEl.style.display = 'none';
+      resultEl.style.display = 'block';
+
+      // Order info card
+      const infoCard = document.getElementById('order-info-card');
+      const statusLabel = STATUS_LABELS[order.status] || order.status;
+      infoCard.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;padding-bottom:.85rem;border-bottom:1px solid var(--border)">
+          <div>
+            <h3 style="margin-bottom:.25rem;font-family:var(--serif);color:var(--plum);font-size:1.25rem">Order #${order.id}</h3>
+            <div style="font-size:.82rem;color:var(--muted)">Placed on ${new Date(order.createdAt).toLocaleDateString('en-IN', { dateStyle: 'long' })}</div>
+          </div>
+          <span class="order-status-chip status-${order.status}" style="font-size:.8rem;padding:.35rem .85rem;font-weight:600">${statusLabel}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.85rem;font-size:.85rem">
+          <div><span style="color:var(--muted);display:block;font-size:.74rem;margin-bottom:.15rem">Customer</span><strong>${order.userName || order.customerName || 'Boutique Client'}</strong></div>
+          <div><span style="color:var(--muted);display:block;font-size:.74rem;margin-bottom:.15rem">Pieces</span><strong>${order.items.length} item${order.items.length > 1 ? 's' : ''}</strong></div>
+          <div><span style="color:var(--muted);display:block;font-size:.74rem;margin-bottom:.15rem">Total Paid</span><strong style="color:var(--wine);font-size:.95rem">₹${order.total.toLocaleString('en-IN')}</strong></div>
+          <div><span style="color:var(--muted);display:block;font-size:.74rem;margin-bottom:.15rem">Payment</span><strong>${order.paymentMethod}</strong></div>
+        </div>
+      `;
+
+      // Timeline
+      if (typeof yazhiRenderTimeline === 'function') {
+        document.getElementById('timeline-display').innerHTML = yazhiRenderTimeline(order);
+      }
+    }
+
+    // Auto-load from URL param or session
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlId = new URLSearchParams(location.search).get('id') || sessionStorage.getItem('yazhi_last_order');
+      if (urlId) {
+        document.getElementById('order-id-input').value = urlId;
+        trackOrder();
+      }
+    });
+  </script>
+</body>
+
+</html>

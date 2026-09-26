@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details – Yazhi Collection | Luxury Boutique</title>
+  <meta name="description" content="Explore handcrafted boutique outfits with detailed fabric specifications, design fit, size chart, and customization options at Yazhi Collection.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Offer Banner -->
+  <div class="offer-banner">
+    <span id="offer-ticker-text">Exclusive 50% Off on your First Order with Code: YAZHI50</span>
+  </div>
+
+  <!-- Global Header -->
+  <header class="yazhi-header">
+    <div class="container header-inner">
+      <a href="home.html" class="logo" title="Yazhi Collection">
+        <img src="images/logo.svg" alt="Yazhi Collection" class="site-logo">
+      </a>
+
+      <nav class="yazhi-nav">
+        <a href="home.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="about.html">About</a>
+        <a href="enquiry.html">Enquiry</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Global Search Bar -->
+      <div class="header-search">
+        <form class="header-search-form" onsubmit="event.preventDefault(); yazhiOpenSearch(this.querySelector('input').value);">
+          <input type="text" class="header-search-input" placeholder="Search boutique styles..." aria-label="Search">
+          <button type="submit" class="header-search-btn" title="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-icon" data-action="open-search" title="Search" aria-label="Open Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <a href="cart.html" class="btn-icon" title="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span data-cart-badge style="display:none">0</span>
+        </a>
+        <a href="login.html" class="btn-icon" data-auth="login-link" title="Customer Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <a href="profile.html" class="btn-icon" data-auth="profile-link" style="display:none" title="My Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <button class="btn-icon" data-auth="logout-link" style="display:none" onclick="yazhiLogout()" title="Logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <div class="drawer-header">
+      <a href="home.html" class="logo"><img src="images/logo.svg" alt="Yazhi Collection" style="height:36px"></a>
+      <button class="drawer-close" id="drawer-close">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <div style="padding:.5rem 1rem 1rem">
+        <form class="header-search-form" onsubmit="event.preventDefault(); yazhiOpenSearch(this.querySelector('input').value);">
+          <input type="text" class="header-search-input" placeholder="Search designs..." aria-label="Search">
+          <button type="submit" class="header-search-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </form>
+      </div>
+      <a href="home.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="new-arrivals.html">New Arrivals</a>
+      <a href="about.html">About Yazhi</a>
+      <a href="cart.html">Shopping Cart</a>
+      <div class="drawer-divider"></div>
+      <a href="track-order.html">Track Order</a>
+      <a href="enquiry.html">Custom Enquiry</a>
+      <a href="contact.html">Contact Boutique</a>
+      <a href="login.html" data-auth="login-link">Login / Register</a>
+      <a href="profile.html" data-auth="profile-link" style="display:none">My Profile</a>
+    </div>
+  </nav>
+
+  <!-- Page Breadcrumb -->
+  <div style="background:var(--cream-sub);padding:1rem 0;border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="breadcrumb" style="justify-content:flex-start;margin:0" id="detail-breadcrumb">
+        <a href="home.html">Home</a>
+        <span>/</span>
+        <a href="collections.html" id="bc-collection">Collections</a>
+        <span>/</span>
+        <span id="bc-product-name" style="color:var(--plum);font-weight:600">Product</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Product Detail View -->
+  <section style="padding:3.5rem 0 5rem">
+    <div class="container">
+      <div id="product-not-found" style="display:none;text-align:center;padding:5rem 2rem">
+        <h2 style="margin-bottom:1rem">Product Not Found</h2>
+        <p style="color:var(--muted);margin-bottom:2rem">The item you are exploring could not be located in our active collections.</p>
+        <a href="collections.html" class="btn btn-primary btn-lg">Browse Collections</a>
+      </div>
+
+      <div class="product-detail-layout" id="product-detail-wrap">
+        <!-- LEFT: Large Product Image -->
+        <div class="product-detail-gallery">
+          <div class="main-image-wrap">
+            <img src="" id="detail-main-img" alt="Product Image">
+            <span class="product-badge gold" id="detail-badge" style="top:1.25rem;left:1.25rem;font-size:.72rem">Curated</span>
+          </div>
+          <div style="margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:.75rem;font-size:.78rem;color:var(--muted)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Handcrafted in Coimbatore, Tamil Nadu</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Product Details & Purchase Actions -->
+        <div class="product-detail-info">
+          <span class="product-detail-meta-chip" id="detail-collection-chip">Collection</span>
+          <h1 class="product-detail-title" id="detail-title">Loading...</h1>
+          <div class="product-detail-tagline" id="detail-tagline">""</div>
+
+          <!-- Price Box -->
+          <div class="product-detail-price-box">
+            <span class="product-detail-price" id="detail-price">₹0</span>
+            <span class="product-detail-original" id="detail-original-price">₹0</span>
+            <span class="product-detail-discount" id="detail-discount-tag">0% OFF</span>
+          </div>
+
+          <!-- Description -->
+          <p class="product-detail-desc" id="detail-desc"></p>
+
+          <!-- Specifications Card (Requirement 8) -->
+          <div class="product-specs-card">
+            <div class="product-specs-title">Fabric & Craftsmanship Details</div>
+            <div class="spec-row">
+              <span class="spec-label">Fabric / Weave:</span>
+              <span class="spec-val" id="spec-fabric">-</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Design & Fit:</span>
+              <span class="spec-val" id="spec-fit">-</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Closure / Fastening:</span>
+              <span class="spec-val" id="spec-closure">-</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Price Range:</span>
+              <span class="spec-val" id="spec-range">-</span>
+            </div>
+          </div>
+
+          <!-- Color Selection -->
+          <div class="color-selector-wrap" id="color-select-area">
+            <div style="font-size:.85rem;font-weight:700;color:var(--plum);margin-bottom:.5rem">Available Colors:</div>
+            <div class="color-pills" id="detail-color-pills"></div>
+          </div>
+
+          <!-- Size Selection + Size Chart Link (Requirement 8) -->
+          <div class="size-selector-wrap">
+            <div class="size-selector-header">
+              <span style="font-size:.85rem;font-weight:700;color:var(--plum)">Choose Size / Fitting:</span>
+              <span class="size-chart-link" onclick="openSizeChartModal()">Size Chart & Fit Guide</span>
+            </div>
+            <div class="size-pills" id="detail-size-pills"></div>
+          </div>
+
+          <!-- Customization Message (Requirement 11) -->
+          <div class="customization-box">
+            <div class="customization-box-text">
+              <strong>Need Custom Color or Tailored Fitting?</strong>
+              <p>Love this design but want a different colour, fabric or style? Tell us what you have in mind — Yazhi Collection can explore a customized option especially for you.</p>
+            </div>
+            <a href="#" id="custom-whatsapp-btn" target="_blank" class="btn btn-whatsapp btn-sm">
+              Consult on WhatsApp
+            </a>
+          </div>
+
+          <!-- Quantity Selector & Actions Area (Requirement 10) -->
+          <div class="product-detail-actions">
+            <div class="qty-row">
+              <span class="qty-row-label">Quantity:</span>
+              <div class="qty-control">
+                <button type="button" class="qty-btn" onclick="adjustDetailQty(-1)" aria-label="Decrease quantity">−</button>
+                <span class="qty-num" id="detail-qty-display">1</span>
+                <button type="button" class="qty-btn" onclick="adjustDetailQty(1)" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+
+            <!-- BUY NOW (Prominently Highlighted) & ADD TO CART (Secondary) -->
+            <div class="cta-buttons-row">
+              <button type="button" class="btn btn-buy-now" id="btn-buy-now" onclick="handleBuyNow()">
+                Buy Now
+              </button>
+              <button type="button" class="btn btn-add-cart" id="btn-add-cart" onclick="handleAddToCart()">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Shipping & Return Information (Requirement 8) -->
+          <div class="policy-cards-grid">
+            <div class="policy-card">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <div>
+                <strong>Shipping Information</strong>
+                <p id="policy-shipping">Insured doorstep dispatch within 24-48 hours. Free shipping across India on orders above ₹4,000.</p>
+              </div>
+            </div>
+            <div class="policy-card">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+              <div>
+                <strong>Return & Exchange Policy</strong>
+                <p id="policy-return">7-day easy boutique exchange guarantee on standard sizes in unstitched, original condition.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Customer Reviews Section (Requirement 16) -->
+      <div class="reviews-section">
+        <div class="reviews-header">
+          <div>
+            <span class="pre-label" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dk);font-weight:700">Verified Feedback</span>
+            <h2 style="font-size:1.8rem;color:var(--plum);margin-top:.25rem">Customer Reviews</h2>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="openReviewModal()">Write a Review</button>
+        </div>
+
+        <div class="reviews-grid" id="product-reviews-grid">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- Related Products Section -->
+      <div style="margin-top:5rem">
+        <div class="section-header">
+          <span class="pre-label">Coordinated Styles</span>
+          <h2 style="font-size:1.8rem">More from This Collection</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="product-grid" id="related-products-grid">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Size Chart Modal -->
+  <div class="search-modal" id="size-chart-modal">
+    <div class="search-modal-box" style="max-width:620px">
+      <div class="search-modal-header">
+        <h3 style="margin:0;font-size:1.15rem;color:var(--plum);font-family:var(--serif)">Yazhi Collection – Size & Measurement Guide</h3>
+        <button class="search-modal-close" onclick="closeSizeChartModal()">✕</button>
+      </div>
+      <div style="padding:1.5rem">
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.25rem">All measurements are provided in inches for body fit guidance. For bespoke bridal outfits, Sharmila M takes customized measurements directly.</p>
+        <table style="width:100%;border-collapse:collapse;font-size:.85rem;text-align:left">
+          <thead>
+            <tr style="background:var(--plum);color:#fff">
+              <th style="padding:.6rem .75rem;border-radius:4px 0 0 4px">Size</th>
+              <th style="padding:.6rem .75rem">Bust (in)</th>
+              <th style="padding:.6rem .75rem">Waist (in)</th>
+              <th style="padding:.6rem .75rem">Hip (in)</th>
+              <th style="padding:.6rem .75rem;border-radius:0 4px 4px 0">Shoulder (in)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:.6rem .75rem;font-weight:600">XS</td><td style="padding:.6rem .75rem">32</td><td style="padding:.6rem .75rem">26</td><td style="padding:.6rem .75rem">35</td><td style="padding:.6rem .75rem">13.5</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:.6rem .75rem;font-weight:600">S</td><td style="padding:.6rem .75rem">34</td><td style="padding:.6rem .75rem">28</td><td style="padding:.6rem .75rem">37</td><td style="padding:.6rem .75rem">14.0</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:.6rem .75rem;font-weight:600">M</td><td style="padding:.6rem .75rem">36</td><td style="padding:.6rem .75rem">30</td><td style="padding:.6rem .75rem">39</td><td style="padding:.6rem .75rem">14.5</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:.6rem .75rem;font-weight:600">L</td><td style="padding:.6rem .75rem">38</td><td style="padding:.6rem .75rem">32</td><td style="padding:.6rem .75rem">41</td><td style="padding:.6rem .75rem">15.0</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:.6rem .75rem;font-weight:600">XL</td><td style="padding:.6rem .75rem">40</td><td style="padding:.6rem .75rem">34</td><td style="padding:.6rem .75rem">43</td><td style="padding:.6rem .75rem">15.5</td></tr>
+            <tr><td style="padding:.6rem .75rem;font-weight:600">XXL</td><td style="padding:.6rem .75rem">42</td><td style="padding:.6rem .75rem">36</td><td style="padding:.6rem .75rem">45</td><td style="padding:.6rem .75rem">16.0</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:1.5rem;text-align:right">
+          <button class="btn btn-primary btn-sm" onclick="closeSizeChartModal()">Got It</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Write Review Modal -->
+  <div class="search-modal" id="review-modal">
+    <div class="search-modal-box" style="max-width:540px">
+      <div class="search-modal-header">
+        <h3 style="margin:0;font-size:1.15rem;color:var(--plum);font-family:var(--serif)">Share Your Boutique Experience</h3>
+        <button class="search-modal-close" onclick="closeReviewModal()">✕</button>
+      </div>
+      <form id="write-review-form" onsubmit="handleReviewSubmit(event)" style="padding:1.5rem">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" id="rev-name" placeholder="E.g. Meenakshi Sundaram" required>
+        </div>
+        <div class="form-group">
+          <label>Rating *</label>
+          <select id="rev-rating" required style="border:1.5px solid var(--border);border-radius:var(--r-sm);padding:.6rem;width:100%">
+            <option value="5">★★★★★ (5/5 - Outstanding Quality)</option>
+            <option value="4">★★★★☆ (4/5 - Very Good)</option>
+            <option value="3">★★★☆☆ (3/5 - Good)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Review & Fitting Feedback *</label>
+          <textarea id="rev-text" rows="4" placeholder="Tell other boutique patrons about the fabric feel, drape, color accuracy, and overall experience..." required></textarea>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:.75rem;margin-top:1rem">
+          <button type="button" class="btn btn-ghost btn-sm" onclick="closeReviewModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="yazhi-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="home.html" class="logo">
+            <img src="images/logo-light.svg" alt="Yazhi Collection" style="height:44px">
+          </a>
+          <p>Handcrafted women's boutique collections curated and designed by Sharmila M in Coimbatore, Tamil Nadu.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <ul>
+            <li><a href="collections.html#sarees">Saree Collection</a></li>
+            <li><a href="collections.html#bridal">Bridal Wear</a></li>
+            <li><a href="collections.html#festive">Festive Wear</a></li>
+            <li><a href="collections.html#party">Party Wear</a></li>
+            <li><a href="collections.html#ethnic">Ethnic Wear</a></li>
+            <li><a href="collections.html#customDesign">Custom Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="new-arrivals.html">New Arrivals</a></li>
+            <li><a href="cart.html">Shopping Bag</a></li>
+            <li><a href="track-order.html">Track Order</a></li>
+            <li><a href="about.html">About Yazhi</a></li>
+            <li><a href="enquiry.html">Custom Enquiry</a></li>
+            <li><a href="contact.html">Store Location</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Boutique</h4>
+          <div class="footer-contact-item">
+            <span>Coimbatore, Tamil Nadu</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>9:00 AM – 9:00 PM Daily</span>
+          </div>
+          <div class="footer-contact-item">
+            <a href="tel:6369685930" style="color:inherit">6369685930</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Yazhi Collection · Sharmila M · Coimbatore. All rights reserved.</p>
+        <p>Boutique Elegance & Contemporary Women's Fashion</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    let currentProduct = null;
+    let selectedColor = null;
+    let selectedSize = null;
+    let currentQty = 1;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id') || 'sar-001';
+
+      currentProduct = typeof yazhiGetProduct === 'function' ? yazhiGetProduct(productId) : null;
+
+      if (!currentProduct) {
+        document.getElementById('product-not-found').style.display = 'block';
+        document.getElementById('product-detail-wrap').style.display = 'none';
+        return;
+      }
+
+      // Populate breadcrumb
+      document.getElementById('bc-product-name').textContent = currentProduct.name;
+      const bcCol = document.getElementById('bc-collection');
+      bcCol.textContent = currentProduct.collection || 'Collections';
+      if (currentProduct.collectionId) {
+        bcCol.href = `collections.html#${currentProduct.collectionId}`;
+      }
+
+      // Populate core details
+      document.title = `${currentProduct.name} – Yazhi Collection Boutique`;
+      document.getElementById('detail-main-img').src = currentProduct.image;
+      document.getElementById('detail-main-img').alt = currentProduct.name;
+      document.getElementById('detail-badge').textContent = currentProduct.badge || 'Curated';
+      document.getElementById('detail-collection-chip').textContent = `${currentProduct.collection || 'Boutique'} Collection`;
+      document.getElementById('detail-title').textContent = currentProduct.name;
+      document.getElementById('detail-tagline').textContent = `"${currentProduct.tagline}"`;
+
+      // Price calculation
+      document.getElementById('detail-price').textContent = `₹${currentProduct.price.toLocaleString('en-IN')}`;
+      if (currentProduct.originalPrice) {
+        document.getElementById('detail-original-price').textContent = `₹${currentProduct.originalPrice.toLocaleString('en-IN')}`;
+        const discPct = Math.round((1 - currentProduct.price / currentProduct.originalPrice) * 100);
+        document.getElementById('detail-discount-tag').textContent = `${discPct}% OFF`;
+        document.getElementById('detail-discount-tag').style.display = '';
+      } else {
+        document.getElementById('detail-original-price').style.display = 'none';
+        document.getElementById('detail-discount-tag').style.display = 'none';
+      }
+
+      // Description & Specifications (Requirement 8)
+      document.getElementById('detail-desc').textContent = currentProduct.description || '';
+      document.getElementById('spec-fabric').textContent = currentProduct.fabric || 'Pure Handcrafted Fabric';
+      document.getElementById('spec-fit').textContent = currentProduct.designFit || 'Classic Tailored Fit';
+      document.getElementById('spec-closure').textContent = currentProduct.closure || 'Concealed Fastening';
+      document.getElementById('spec-range').textContent = currentProduct.priceRange || `₹${currentProduct.price.toLocaleString('en-IN')}`;
+
+      if (currentProduct.shipping) {
+        document.getElementById('policy-shipping').textContent = currentProduct.shipping;
+      }
+      if (currentProduct.returnPolicy) {
+        document.getElementById('policy-return').textContent = currentProduct.returnPolicy;
+      }
+
+      // Colors
+      const colorContainer = document.getElementById('detail-color-pills');
+      if (currentProduct.colors && currentProduct.colors.length) {
+        selectedColor = currentProduct.colors[0];
+        colorContainer.innerHTML = currentProduct.colors.map((c, i) => `
+          <button type="button" class="color-pill ${i === 0 ? 'active' : ''}" onclick="selectColor('${c}', this)">${c}</button>
+        `).join('');
+      } else {
+        document.getElementById('color-select-area').style.display = 'none';
+      }
+
+      // Sizes
+      const sizeContainer = document.getElementById('detail-size-pills');
+      if (currentProduct.sizes && currentProduct.sizes.length) {
+        selectedSize = currentProduct.sizes[0];
+        sizeContainer.innerHTML = currentProduct.sizes.map((s, i) => `
+          <button type="button" class="size-pill ${i === 0 ? 'active' : ''}" onclick="selectSize('${s}', this)">${s}</button>
+        `).join('');
+      } else {
+        selectedSize = 'Free Size';
+        sizeContainer.innerHTML = `<span class="size-pill active">Free Size / Standard Fit</span>`;
+      }
+
+      // Customization WhatsApp link
+      const waBtn = document.getElementById('custom-whatsapp-btn');
+      const waMsg = `Hello Sharmila M! I am interested in customizing "${currentProduct.name}" (ID: ${currentProduct.id}) in another colour or style.`;
+      waBtn.href = `https://wa.me/916369685930?text=${encodeURIComponent(waMsg)}`;
+
+      // Render Approved Reviews
+      renderReviews(currentProduct.id);
+
+      // Render Related Products
+      renderRelatedProducts(currentProduct);
+    });
+
+    function selectColor(color, el) {
+      selectedColor = color;
+      document.querySelectorAll('.color-pill').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function selectSize(size, el) {
+      selectedSize = size;
+      document.querySelectorAll('.size-pill').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function adjustDetailQty(delta) {
+      currentQty = Math.max(1, Math.min(10, currentQty + delta));
+      document.getElementById('detail-qty-display').textContent = currentQty;
+    }
+
+    // Add to Cart Action
+    function handleAddToCart() {
+      if (!currentProduct) return;
+      if (typeof yazhiAddToCart === 'function') {
+        yazhiAddToCart(currentProduct, currentQty, selectedColor, selectedSize);
+      }
+    }
+
+    // Buy Now Action (Requirement 10)
+    function handleBuyNow() {
+      if (!currentProduct) return;
+      if (typeof yazhiAddToCart === 'function') {
+        yazhiAddToCart(currentProduct, currentQty, selectedColor, selectedSize);
+      }
+      window.location.href = 'checkout.html';
+    }
+
+    // Reviews rendering
+    function renderReviews(productId) {
+      const grid = document.getElementById('product-reviews-grid');
+      if (!grid) return;
+      const reviews = typeof yazhiGetApprovedReviews === 'function' ? yazhiGetApprovedReviews(productId) : [];
+
+      if (reviews.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--muted);background:#fff;border-radius:var(--r-md);border:1px dashed var(--border)">
+            <p>No customer reviews yet for this piece. Be the first to share your experience!</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = reviews.map(r => `
+        <div class="review-card">
+          <div class="review-stars">${'★'.repeat(r.rating || 5)}${'☆'.repeat(5 - (r.rating || 5))}</div>
+          <p class="review-text">"${r.comment}"</p>
+          <div class="review-author">
+            <span>${r.customerName}</span>
+            <span class="review-date">${r.date || 'Verified Patron'}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openReviewModal() {
+      document.getElementById('review-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeReviewModal() {
+      document.getElementById('review-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function openSizeChartModal() {
+      document.getElementById('size-chart-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSizeChartModal() {
+      document.getElementById('size-chart-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function handleReviewSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('rev-name').value.trim();
+      const rating = document.getElementById('rev-rating').value;
+      const text = document.getElementById('rev-text').value.trim();
+
+      if (!name || !text) return;
+
+      if (typeof yazhiSubmitReview === 'function' && currentProduct) {
+        yazhiSubmitReview({
+          productId: currentProduct.id,
+          productName: currentProduct.name,
+          customerName: name,
+          rating: Number(rating),
+          comment: text
+        });
+        closeReviewModal();
+        if (typeof yazhiToast === 'function') {
+          yazhiToast('Thank you! Your review has been added.', 'success');
+        }
+        renderReviews(currentProduct.id);
+        document.getElementById('write-review-form').reset();
+      }
+    }
+
+    // Related Products (Requirement 8.18)
+    function renderRelatedProducts(prod) {
+      const relGrid = document.getElementById('related-products-grid');
+      if (!relGrid || typeof yazhiGetAllProducts !== 'function') return;
+
+      const all = yazhiGetAllProducts();
+      // Filter for items in same collection or similar, excluding current item
+      const related = all.filter(p => p.id !== prod.id && (p.collectionId === prod.collectionId || p.collection === prod.collection)).slice(0, 4);
+
+      if (related.length === 0) {
+        relGrid.parentElement.style.display = 'none';
+        return;
+      }
+
+      relGrid.innerHTML = related.map(p => `
+        <a href="product-detail.html?id=${p.id}" class="product-card reveal-on-scroll">
+          <div class="product-img-wrap">
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+            <span class="product-badge">${p.badge || 'Curated'}</span>
+          </div>
+          <div class="product-info">
+            <div class="product-collection-tag">${p.collection || ''} Collection</div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-price-row">
+              <span class="product-price">₹${p.price.toLocaleString('en-IN')}</span>
+              ${p.originalPrice ? `<span class="original">₹${p.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+            </div>
+            <div class="product-tagline">"${p.tagline}"</div>
+            <div class="product-card-cta">
+              <span>Explore Piece</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+  </script>
+</body>
+
+</html>

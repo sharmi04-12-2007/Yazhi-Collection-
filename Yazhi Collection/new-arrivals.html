@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Arrivals – Yazhi Collection | Handpicked Luxury Boutiques</title>
+  <meta name="description"
+    content="Discover freshly curated new arrivals at Yazhi Collection. Handcrafted silk, bridal lehengas and festive ethnic fashion in Coimbatore.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Offer Banner -->
+  <div class="offer-banner"><span id="offer-ticker-text">Exclusive 50% Off on your First Order with Code: YAZHI50</span></div>
+
+  <!-- Global Header (Requirements 6, 17, 21) -->
+  <header class="yazhi-header">
+    <div class="container header-inner">
+      <a href="home.html" class="logo" title="Yazhi Collection">
+        <img src="images/logo.svg" alt="Yazhi Collection" class="site-logo">
+      </a>
+      <nav class="yazhi-nav">
+        <a href="home.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="new-arrivals.html" class="active">New Arrivals</a>
+        <a href="about.html">About</a>
+        <a href="enquiry.html">Enquiry</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Global Search Bar -->
+      <div class="header-search">
+        <form class="header-search-form" onsubmit="event.preventDefault(); yazhiOpenSearch(this.querySelector('input').value);">
+          <input type="text" class="header-search-input" placeholder="Search boutique styles..." aria-label="Search">
+          <button type="submit" class="header-search-btn" title="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-icon" data-action="open-search" title="Search" aria-label="Open Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <a href="cart.html" class="btn-icon" title="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span data-cart-badge style="display:none">0</span>
+        </a>
+        <a href="login.html" class="btn-icon" data-auth="login-link" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <a href="profile.html" class="btn-icon" data-auth="profile-link" style="display:none" title="My Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <button class="btn-icon" data-auth="logout-link" style="display:none" onclick="yazhiLogout()" title="Logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <div class="drawer-header">
+      <img src="images/logo.svg" alt="Yazhi Collection" style="height:34px;width:auto">
+      <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="home.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="new-arrivals.html" class="active">New Arrivals</a>
+      <a href="about.html">About Boutique</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Shopping Bag</a>
+      <div class="drawer-divider"></div>
+      <a href="login.html" data-auth="login-link">Customer Login</a>
+      <a href="profile.html" data-auth="profile-link" style="display:none">My Account</a>
+      <a href="history.html" data-auth="profile-link" style="display:none">My Orders</a>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="gold-sub">Fresh Off The Loom</span>
+      <h1>Exclusive New Arrivals</h1>
+      <p>Curated limited-edition haute couture, bridal silhouettes & festive handloom wonders designed by Sharmila M</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div style="background:linear-gradient(135deg,rgba(122,52,85,.08),rgba(201,164,92,.08));border:1px solid var(--border-g);border-radius:var(--r-md);padding:1.15rem 1.75rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem;color:var(--plum)">
+        <span style="font-size:1.4rem;color:var(--gold)">✦</span>
+        <span style="font-size:.9rem;line-height:1.5"><strong>Boutique Exclusives:</strong> We present strictly up to 7 curated pieces each season to maintain exceptional craftsmanship, hand-embroidery uniqueness, and bespoke exclusivity. Click any piece to explore detailed fabrics, closures, sizes, and styling.</span>
+      </div>
+
+      <!-- Product Grid (Requirements 7, 9: Click to enter Product Detail, NO Add to Cart on front cards) -->
+      <div class="product-grid" id="new-arrivals-grid"></div>
+    </div>
+  </section>
+
+  <!-- Consultation Banner -->
+  <section class="section-alt" style="padding:3rem 0;background:linear-gradient(180deg,var(--cream),var(--blush-lt))">
+    <div class="container" style="text-align:center;max-width:680px">
+      <span class="gold-sub">Personalized Attention</span>
+      <h3 style="font-family:var(--serif);font-size:1.6rem;color:var(--plum);margin-bottom:.65rem">Looking for Custom Colorways or Sizing?</h3>
+      <p style="color:var(--muted);margin-bottom:1.5rem;line-height:1.6">Every Yazhi creation can be tailored to your measurements, blouse neckline, and drape preference. Chat directly with founder Sharmila M.</p>
+      <a href="https://wa.me/916369685930?text=Hi%20Yazhi%20Collection!%20I%20am%20interested%20in%20customizing%20a%20new%20arrival."
+        target="_blank" class="btn btn-whatsapp" style="display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 1.5rem">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        WhatsApp Designer Sharmila M
+      </a>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="yazhi-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-light.svg" alt="Yazhi Collection" class="footer-logo">
+          <p>A premier luxury women's boutique founded by Sharmila M in Coimbatore, Tamil Nadu. Handcrafted sarees, bridal silks, festive drapes, and bespoke designs made to elevate every celebration.</p>
+          <div style="margin-top:1rem;color:var(--gold);font-size:.85rem">✦ Authentic Indian Handloom & Haute Couture</div>
+        </div>
+        <div class="footer-col">
+          <h4>Boutique Collections</h4>
+          <ul>
+            <li><a href="collections.html#bridal">Bridal Troussseau</a></li>
+            <li><a href="collections.html#sarees">Saree Collection</a></li>
+            <li><a href="collections.html#festive">Festive Celebrations</a></li>
+            <li><a href="collections.html#ethnic">Heritage Ethnic</a></li>
+            <li><a href="collections.html#custom">Custom Design Couture</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="new-arrivals.html">New Arrivals</a></li>
+            <li><a href="about.html">About Yazhi Boutique</a></li>
+            <li><a href="enquiry.html">Boutique Enquiry</a></li>
+            <li><a href="contact.html">Store Location & Hours</a></li>
+            <li><a href="track-order.html">Track Your Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Boutique Contact</h4>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Sharmila M (Founder & Designer)</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Coimbatore, Tamil Nadu, India</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="tel:6369685930" style="color:inherit">6369685930</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>9:00 AM – 9:00 PM Daily</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Yazhi Collection · Sharmila M · Coimbatore, Tamil Nadu. All rights reserved.</p>
+        <p>Bespoke Indian Elegance · Handcrafted with Pride</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('new-arrivals-grid');
+      if (!grid) return;
+
+      // Get latest products through centralized source
+      const allItems = (typeof yazhiGetAllProducts === 'function') ? yazhiGetAllProducts() : YAZHI_PRODUCTS;
+      const arrivals = YAZHI_NEW_ARRIVALS.slice(0, 7).map(na => {
+        const full = allItems.find(p => p.id === na.id) || na;
+        return { ...na, ...full };
+      });
+
+      grid.innerHTML = arrivals.map(p => {
+        const discPct = (p.originalPrice && p.originalPrice > p.price)
+          ? Math.round((1 - p.price / p.originalPrice) * 100)
+          : null;
+
+        return `
+          <div class="product-card reveal-on-scroll" data-product-id="${p.id}">
+            <a href="product-detail.html?id=${p.id}" class="product-img-wrap" style="text-decoration:none;display:block">
+              <img src="${p.image}" alt="${p.name}" class="product-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80'">
+              <span class="product-badge new">${p.badge || 'New'}</span>
+              ${discPct ? `<span class="product-badge gold" style="top:.75rem;right:.75rem;left:auto">-${discPct}%</span>` : ''}
+            </a>
+            <div class="product-info">
+              <div class="tag" style="margin-bottom:.35rem">${p.collection || 'Exclusive'} Collection</div>
+              <h3 class="product-name" style="margin-bottom:.35rem">
+                <a href="product-detail.html?id=${p.id}" style="color:inherit;text-decoration:none">${p.name}</a>
+              </h3>
+              <div class="product-price" style="display:flex;align-items:baseline;gap:.5rem;margin-bottom:.5rem">
+                <span class="current">₹${p.price.toLocaleString('en-IN')}</span>
+                ${p.originalPrice ? `<span class="original">₹${p.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+              </div>
+              <p style="font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:.85rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${p.description}</p>
+              
+              <div style="margin-top:auto">
+                <a href="product-detail.html?id=${p.id}" class="btn btn-outline btn-full btn-sm" style="font-size:.82rem;border-color:var(--wine);color:var(--wine);padding:.6rem">
+                  Explore Design Details →
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      yazhiInitScrollReveal();
+    });
+  </script>
+</body>
+
+</html>

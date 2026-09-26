@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout – Yazhi Collection | Secure Boutique Checkout</title>
+  <meta name="description"
+    content="Complete your order at Yazhi Collection – luxury women's boutique in Coimbatore. Secure checkout with UPI and COD options.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Offer Banner -->
+  <div class="offer-banner"><span id="offer-ticker-text">Exclusive 50% Off on your First Order with Code: YAZHI50</span></div>
+
+  <!-- Global Header (Requirement 18: Restored all missing navigation: Enquiry, Contact, Search, New Arrivals, Profile, Cart) -->
+  <header class="yazhi-header">
+    <div class="container header-inner">
+      <a href="home.html" class="logo" title="Yazhi Collection">
+        <img src="images/logo.svg" alt="Yazhi Collection" class="site-logo">
+      </a>
+      <nav class="yazhi-nav">
+        <a href="home.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="about.html">About</a>
+        <a href="enquiry.html">Enquiry</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Global Search Bar -->
+      <div class="header-search">
+        <form class="header-search-form" onsubmit="event.preventDefault(); yazhiOpenSearch(this.querySelector('input').value);">
+          <input type="text" class="header-search-input" placeholder="Search boutique styles..." aria-label="Search">
+          <button type="submit" class="header-search-btn" title="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-icon" data-action="open-search" title="Search" aria-label="Open Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <a href="cart.html" class="btn-icon" title="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span data-cart-badge style="display:none">0</span>
+        </a>
+        <a href="login.html" class="btn-icon" data-auth="login-link" title="Login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <a href="profile.html" class="btn-icon" data-auth="profile-link" style="display:none" title="My Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <button class="btn-icon" data-auth="logout-link" style="display:none" onclick="yazhiLogout()" title="Logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <div class="drawer-header">
+      <img src="images/logo.svg" alt="Yazhi Collection" style="height:34px;width:auto">
+      <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-nav">
+      <a href="home.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="new-arrivals.html">New Arrivals</a>
+      <a href="about.html">About Boutique</a>
+      <a href="enquiry.html">Enquiry</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Shopping Bag</a>
+      <div class="drawer-divider"></div>
+      <a href="profile.html" data-auth="profile-link" style="display:none">My Account</a>
+      <a href="history.html" data-auth="profile-link" style="display:none">My Orders</a>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero" style="padding:2.5rem 0 3rem">
+    <div class="container">
+      <div class="breadcrumb" style="justify-content:center;margin-bottom:.75rem">
+        <a href="home.html">Home</a>
+        <span>/</span>
+        <a href="cart.html">Cart</a>
+        <span>/</span>
+        <span style="color:var(--gold)">Checkout</span>
+      </div>
+      <span class="gold-sub">Order Finalization</span>
+      <h1>Secure Checkout</h1>
+      <p>Confirm your shipping address and select preferred payment for your Yazhi boutique order</p>
+    </div>
+  </div>
+
+  <section style="padding:2.5rem 0 4rem">
+    <div class="container">
+      <div class="checkout-layout">
+        <!-- LEFT: Address + Payment -->
+        <div>
+          <!-- Delivery Address -->
+          <div class="section-card">
+            <h3 style="display:flex;align-items:center;gap:.6rem;font-family:var(--serif);color:var(--plum);margin-bottom:1.25rem">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--wine)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Delivery & Shipping Address
+            </h3>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="addr-name" placeholder="Full name of recipient" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="addr-phone" placeholder="10-digit mobile number" maxlength="10" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Address Line 1 *</label>
+              <input type="text" id="addr-line1" placeholder="House/Flat No., Building, Street Name" required>
+            </div>
+            <div class="form-group">
+              <label>Address Line 2 (Optional)</label>
+              <input type="text" id="addr-line2" placeholder="Locality, Landmark">
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>City *</label>
+                <input type="text" id="addr-city" placeholder="City" value="Coimbatore" required>
+              </div>
+              <div class="form-group">
+                <label>Pincode *</label>
+                <input type="text" id="addr-pin" placeholder="6-digit pincode" maxlength="6" required>
+              </div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>State *</label>
+                <input type="text" id="addr-state" placeholder="State" value="Tamil Nadu" required>
+              </div>
+              <div class="form-group">
+                <label>Address Type</label>
+                <select id="addr-type">
+                  <option>Home</option>
+                  <option>Work / Office</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Method -->
+          <div class="section-card">
+            <h3 style="display:flex;align-items:center;gap:.6rem;font-family:var(--serif);color:var(--plum);margin-bottom:1.25rem">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--wine)"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              Payment Method
+            </h3>
+            <div class="payment-options">
+              <label class="payment-option selected" id="pay-upi-opt">
+                <input type="radio" name="payment" value="upi" checked>
+                <div>
+                  <div class="pay-label">UPI Payment (GPay, PhonePe, Paytm)</div>
+                  <div class="pay-sub">Fast & direct payment verification with boutique team</div>
+                </div>
+              </label>
+              <label class="payment-option" id="pay-cod-opt">
+                <input type="radio" name="payment" value="cod">
+                <div>
+                  <div class="pay-label">Cash on Delivery (COD)</div>
+                  <div class="pay-sub">Pay securely upon doorstep parcel delivery</div>
+                </div>
+              </label>
+            </div>
+
+            <div id="upi-section" style="margin-top:1.25rem">
+              <div class="form-group">
+                <label>Your UPI ID *</label>
+                <input type="text" id="upi-id" placeholder="e.g. yourname@okaxis / mobile@upi" style="letter-spacing:.5px">
+              </div>
+              <div class="alert alert-info" style="font-size:.82rem;line-height:1.5">
+                ✦ After placing order, boutique founder <strong>Sharmila M</strong> will send the payment confirmation link via WhatsApp from <strong>6369685930</strong>.
+              </div>
+            </div>
+
+            <div id="cod-section" style="display:none;margin-top:1.25rem">
+              <div class="alert alert-info" style="font-size:.82rem;line-height:1.5">
+                ✦ Cash will be collected by courier upon delivery. Please have exact payment ready.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Order Notes / Blouse Stitching Requests (Optional)</label>
+            <textarea id="order-notes" rows="3" placeholder="Mention any custom sleeve length, fall/pico requirement, or delivery date note..."
+              style="width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:var(--r-sm);resize:vertical"></textarea>
+          </div>
+        </div>
+
+        <!-- RIGHT: Order Summary -->
+        <div class="cart-summary sticky-top">
+          <h3 style="font-family:var(--serif);color:var(--plum);margin-bottom:1.25rem">Order Summary</h3>
+          <div id="checkout-items"></div>
+          <hr class="divider">
+          <div id="checkout-totals"></div>
+          <button class="btn btn-primary btn-full btn-lg" onclick="placeOrder()" style="margin-top:1.25rem;font-size:1.05rem;box-shadow:0 4px 16px rgba(122,52,85,.3)">
+            Confirm & Place Order ✦
+          </button>
+          <div style="font-size:.76rem;color:var(--muted);text-align:center;margin-top:.85rem;line-height:1.4">
+            Secure Checkout · 100% Genuine Handloom Guarantee
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="yazhi-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-light.svg" alt="Yazhi Collection" class="footer-logo">
+          <p>Handcrafted women's boutique by Sharmila M in Coimbatore, Tamil Nadu. Creating timeless memories with pure silks, designer lehengas, and custom fits.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="enquiry.html">Customization Enquiry</a></li>
+            <li><a href="contact.html">Store Location & Timing</a></li>
+            <li><a href="track-order.html">Track Order Status</a></li>
+            <li><a href="about.html">About Yazhi Boutique</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Direct Support</h4>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="tel:6369685930" style="color:inherit">6369685930</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>9:00 AM – 9:00 PM Daily</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Coimbatore, Tamil Nadu</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Yazhi Collection · Sharmila M · Coimbatore, Tamil Nadu</p>
+        <p>Premium Women's Boutique Experience</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script>
+    const session = yazhiGetSession();
+    if (!session) { window.location.href = 'login.html?redirect=checkout.html'; }
+
+    const couponCode = sessionStorage.getItem('yazhi_coupon') || '';
+
+    function renderCheckoutSummary() {
+      const cart = yazhiGetCart();
+      if (cart.length === 0) { window.location.href = 'cart.html'; return; }
+
+      const itemsEl = document.getElementById('checkout-items');
+      itemsEl.innerHTML = cart.map(i => `
+        <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.75rem;gap:.75rem">
+          <span style="flex:1;line-height:1.4">
+            <strong>${i.name}</strong><br>
+            <span style="color:var(--muted);font-size:.75rem">${i.color || ''} · ${i.size || 'Free Size'} · Qty: ${i.qty}</span>
+          </span>
+          <span style="font-weight:600;white-space:nowrap;color:var(--plum)">₹${(i.price * i.qty).toLocaleString('en-IN')}</span>
+        </div>
+      `).join('');
+
+      const totals = yazhiCalculateTotals(cart, couponCode, session ? session.id : null);
+      const totEl = document.getElementById('checkout-totals');
+      totEl.innerHTML = `
+        <div class="summary-row"><span>Subtotal (${totals.itemCount} items)</span><span>₹${totals.subtotal.toLocaleString('en-IN')}</span></div>
+        ${totals.discount > 0 ? `<div class="summary-row saving"><span>✦ ${totals.offerLabel || 'Discount'}</span><span>−₹${totals.discount.toLocaleString('en-IN')}</span></div>` : ''}
+        <div class="summary-row"><span>Express Insured Delivery</span><span>${totals.delivery === 0 ? '<span style="color:var(--ok);font-weight:600">FREE</span>' : '₹' + totals.delivery}</span></div>
+        <div class="summary-row total" style="font-size:1.15rem;color:var(--wine)"><span>Total Payable</span><span>₹${totals.total.toLocaleString('en-IN')}</span></div>
+      `;
+    }
+
+    // Payment option toggle
+    document.querySelectorAll('.payment-option input').forEach(radio => {
+      radio.addEventListener('change', e => {
+        document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+        e.target.closest('.payment-option').classList.add('selected');
+        const isUpi = e.target.value === 'upi';
+        document.getElementById('upi-section').style.display = isUpi ? '' : 'none';
+        document.getElementById('cod-section').style.display = isUpi ? 'none' : '';
+      });
+    });
+
+    function placeOrder() {
+      const name = document.getElementById('addr-name').value.trim();
+      const phone = document.getElementById('addr-phone').value.trim();
+      const line1 = document.getElementById('addr-line1').value.trim();
+      const city = document.getElementById('addr-city').value.trim();
+      const pin = document.getElementById('addr-pin').value.trim();
+      const state = document.getElementById('addr-state').value.trim();
+      const payMethod = document.querySelector('input[name=payment]:checked').value;
+      const upiId = document.getElementById('upi-id').value.trim();
+
+      if (!name || !phone || !line1 || !city || !pin) {
+        yazhiToast('Please fill all required address fields.', 'error'); return;
+      }
+      if (!/^\d{10}$/.test(phone)) { yazhiToast('Please enter a valid 10-digit phone number.', 'error'); return; }
+      if (!/^\d{6}$/.test(pin)) { yazhiToast('Please enter a valid 6-digit pincode.', 'error'); return; }
+      if (payMethod === 'upi' && !upiId) { yazhiToast('Please enter your UPI ID for verification.', 'error'); return; }
+
+      const cart = yazhiGetCart();
+      const totals = yazhiCalculateTotals(cart, couponCode, session.id);
+      const address = {
+        name,
+        phone,
+        line1,
+        line2: document.getElementById('addr-line2').value.trim(),
+        city,
+        pin,
+        state,
+        type: document.getElementById('addr-type').value,
+        notes: document.getElementById('order-notes').value.trim()
+      };
+
+      const order = yazhiPlaceOrder(
+        session.id,
+        session.name || name,
+        session.phone || phone,
+        cart,
+        address,
+        payMethod === 'upi' ? `UPI (${upiId})` : 'Cash on Delivery',
+        totals.appliedOffer
+      );
+
+      yazhiClearCart();
+      sessionStorage.removeItem('yazhi_coupon');
+      sessionStorage.setItem('yazhi_last_order', order.id);
+      window.location.href = 'order-success.html';
+    }
+
+    function prefillUser() {
+      if (session) {
+        if (session.name) document.getElementById('addr-name').value = session.name;
+        if (session.phone) document.getElementById('addr-phone').value = session.phone;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      prefillUser();
+      renderCheckoutSummary();
+    });
+  </script>
+</body>
+
+</html>
